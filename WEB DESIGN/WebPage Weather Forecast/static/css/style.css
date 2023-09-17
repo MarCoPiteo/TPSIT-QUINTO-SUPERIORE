@@ -1,0 +1,54 @@
+
+
+.hero {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.50), rgba(0, 0, 0, 0.90)),
+    url(../images/pexels-pixabay-76969.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    height: 100vh;
+    width: 100%;
+
+    flex-direction: column;
+}
+
+
+#map { 
+    height: 180px; 
+    border-radius: 20px;
+}
+
+
+.container {
+    max-width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.heroTitle {
+    font-size: 56px;
+}
+.heroDescription {
+    font-size: 20px;
+}
+
+
+.listContainer {
+    opacity: 0;
+}
+.listContainer.animation {
+    transition: all 0.5s ease-in-out;
+    opacity: 100%;
+
+    background-color: black;
+}
+
+
+input {
+    width: 100%;
+}
+.flex-fill {
+    flex: 1 !important;
+}
