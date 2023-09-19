@@ -12,8 +12,8 @@
     <title>Weather Forecast</title>
 </head>
 <body>
-    <div class="hero text-center d-flex justify-content-center align-items-center">
-        <div class="container text-white">
+    <div class="hero text-center d-flex justify-content-center align-items-center flex-column">
+        <div class="container text-white mx-auto">
             <div class="titleContainer mb-4">
                 <h1 class="heroTitle">Weather Forecast API</h1>
                 <h4 class="heroDescription">Seamless integration of high-resolution weather models with up 16 days forecast</h2>
@@ -44,9 +44,12 @@
                     </div>
                 </form>
             </div>
-            <div class="listContainer text-white mt-4">
-                <ul class="list-group">
+            <div class="listContainer text-white mt-4 mx-auto">
+                <ul class="list-group d-flex flex-row flex-wrap justify-content-between">
                     <!--ELEMENTI DA AGGIUNGERE DINAMICAMENTE-->
+
+                    <!--COME NEL SITO DELLA APPLE (FORSE), CERCARE DI FARE UN DIV DOVE SI STAMPANO LE TEMPERATURE,
+                    CHE ESCA DAL FLUSSO DELLA PAGINA, E OGNI VOLTA CHE SI SCROLLA VENGONO STAMPATE NUOVE TEMPERATURE-->
                 </ul>
             </div>
         </div>        

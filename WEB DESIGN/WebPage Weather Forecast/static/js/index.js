@@ -20,15 +20,30 @@ document.querySelector(".weatherForm").addEventListener("submit", function (even
         //console.log(data.hourly.time)
         //console.log(data.hourly.temperature_2m)
 
+        const listMaxLength = 10
         let temperatureList = document.querySelector(".list-group")
 
-        for (let i = 0; i < 10; i++) {
-            let temperatureElement = document.createElement("li")
+        //UL LENGTH CHECK
+        let listElement = document.querySelectorAll(".list-group-item")
 
-            temperatureElement.classList.add("list-group-item")
-            temperatureElement.innerHTML = `${data.hourly.time[i]} --> ${data.hourly.temperature_2m[i]}`
-            //console.log(temperatureElement)
-            temperatureList.appendChild(temperatureElement)
+        if (listElement.length !== 0) {
+            for (i = 0; i < listMaxLength; i++) {
+                temperatureList.removeChild(listElement[i])
+            }
+        }
+
+        for (let i = 0; i < listMaxLength; i++) {
+            //setTimeout(() => {
+                let temperatureElement = document.createElement("li")
+                
+                //CHIEDERE COME FARE PER DIVIDERE LE TEMPERATURE SENZA IL MARGIN
+                temperatureElement.classList.add("list-group-item", "rounded-pill", "text-white", /*"me-2", */"mb-1", "flex-grow-1",
+                "border", "border-white")
+                temperatureElement.innerHTML = `${data.hourly.time[i]} --> ${data.hourly.temperature_2m[i]}`
+
+                //console.log(temperatureElement)
+                temperatureList.appendChild(temperatureElement)
+            //}, 1000);
         }
     })
 })

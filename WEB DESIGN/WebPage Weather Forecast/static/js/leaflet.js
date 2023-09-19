@@ -5,11 +5,20 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
+
+var marker
+
 map.on("click", function(e) {
     //console.log(e)
 
-    var marker = L.marker([e.latlng.lat, e.latlng.lng]).addTo(map)
-    
+    //FUNZIONE PER AGGIORNARE IL MARKER SULLA MAPPA
+    if (marker != undefined) {
+        map.removeLayer(marker)
+    }
+
+    marker = L.marker([e.latlng.lat, e.latlng.lng])
+    map.addLayer(marker)
+
     let latitudine = document.querySelector("#lat").value = e.latlng.lat
     let longitude = document.querySelector("#lng").value = e.latlng.lng 
 })
