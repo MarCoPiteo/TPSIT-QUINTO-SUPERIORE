@@ -1,24 +1,60 @@
-var map = L.map('map').setView([41.1187, 16.852], 13); //L è una variabile speciale che rappresenta proprio leaflet
+let marker
+let map
 
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-}).addTo(map);
+function createMap(lat, lng) {
+    map = L.map('map').setView([lat, lng], 13); //L è una variabile speciale che rappresenta proprio leaflet
+
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+
+    addMarker(lat, lng)
+
+    
+    let markerLocality
+    
+    map.on("click", async function(e) {
+        //console.log(e)
+    
+        let markerLat = e.latlng.lat
+        let markerLng = e.latlng.lng
+
+        addMarker(markerLat, markerLng)
+
+    
+        let position = await checkLocation(e.latlng.lat, e.latlng.lng)
+    
+        markerLocality = formatLocation(position)
+        //console.log(markerLocality)
+    
+        
+    })
+}
 
 
-var marker
+function formatLocation(locality){
+    //console.log(locality)
 
-map.on("click", function(e) {
-    //console.log(e)
+    return `${locality.city}, ${locality.countryName}`
+}
 
-    //FUNZIONE PER AGGIORNARE IL MARKER SULLA MAPPA
+function addMarker(markerLat, markerLng) {
+   //console.log(marker)
     if (marker != undefined) {
-        map.removeLayer(marker)
+        marker.remove()
     }
 
-    marker = L.marker([e.latlng.lat, e.latlng.lng])
-    map.addLayer(marker)
+    marker = L.marker([markerLat, markerLng]).addTo(map)
 
-    let latitudine = document.querySelector("#lat").value = e.latlng.lat
-    let longitude = document.querySelector("#lng").value = e.latlng.lng 
-})
+    latInput.value = markerLat
+    lngInput.value = markerLng
+}
+
+function moveMarker(userInputLat, userInputLng) {
+    //console.log(userInputLat)
+
+    map.flyTo([userInputLat, userInputLng])
+
+    addMarker(userInputLat, userInputLng)
+}
