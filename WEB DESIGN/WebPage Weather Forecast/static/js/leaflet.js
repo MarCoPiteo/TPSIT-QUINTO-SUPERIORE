@@ -1,5 +1,7 @@
 let marker
 let map
+let markerLocality
+
 
 function createMap(lat, lng) {
     map = L.map('map').setView([lat, lng], 13); //L è una variabile speciale che rappresenta proprio leaflet
@@ -12,23 +14,13 @@ function createMap(lat, lng) {
     addMarker(lat, lng)
 
     
-    let markerLocality
-    
-    map.on("click", async function(e) {
+    map.on("click", function(e) {
         //console.log(e)
     
         let markerLat = e.latlng.lat
         let markerLng = e.latlng.lng
 
         addMarker(markerLat, markerLng)
-
-    
-        let position = await checkLocation(e.latlng.lat, e.latlng.lng)
-    
-        markerLocality = formatLocation(position)
-        //console.log(markerLocality)
-    
-        
     })
 }
 
@@ -36,10 +28,16 @@ function createMap(lat, lng) {
 function formatLocation(locality){
     //console.log(locality)
 
-    return `${locality.city}, ${locality.countryName}`
+    if (locality.city !== "" || locality.city) {
+        return `${locality.city}, ${locality.countryName}`
+    } else if (locality.countryName === "" || locality.city && locality.countryName === undefined) {
+        return "Località non definibile"
+    } else {
+        return `${locality.locality}, ${locality.countryName}`
+    }
 }
 
-function addMarker(markerLat, markerLng) {
+async function addMarker(markerLat, markerLng) {
    //console.log(marker)
     if (marker != undefined) {
         marker.remove()
@@ -49,6 +47,18 @@ function addMarker(markerLat, markerLng) {
 
     latInput.value = markerLat
     lngInput.value = markerLng
+
+
+    let position = await checkLocation(markerLat, markerLng)
+    
+    markerLocality = formatLocation(position)
+    //console.log(markerLocality)
+    
+    localityInput.value = markerLocality
+
+    /*setTimeout(() => {
+        localityInput.value = markerLocality
+    }, 5000);*/
 }
 
 function moveMarker(userInputLat, userInputLng) {

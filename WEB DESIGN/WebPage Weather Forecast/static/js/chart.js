@@ -11,6 +11,6 @@ let config = {
       }]
     },
     scales: {
-
+        y: 
     }
 }

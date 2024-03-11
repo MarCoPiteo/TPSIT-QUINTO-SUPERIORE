@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigazione</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background-color: rgb(255, 255, 255);
+        }
+        #navigation{
+            width: 100%;
+            height: 100px;
+            background-color: rgb(255, 0, 0);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+
+        }
+
+        #navigation img{
+            width: 175px;
+            height: 90px;
+            
+        }
+
+        #navigation img .img{
+            width: 100%;
+            height: 100%;
+
+        }
+
+        #navigation h1{
+            text-align: center;
+            font: bold;
+            color: rgb(0, 0, 0);
+            font-size: 30px;
+        }
+
+        #navigation ul{
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-end;
+        }
+
+        #navigation ul li{
+            margin: 0 10px;
+            padding: 15px 0;
+
+        }
+
+        #navigation ul li a{
+            text-decoration: none;
+
+            color: rgb(0, 0, 0);
+            cursor: pointer;
+        }
+
+        #container {
+            display: flex;
+            margin-top: 10px;
+        }
+
+        #left, #center, #right {
+            width: 200px;
+        }
+
+        #left, #right {
+            height: 580px;
+        }
+
+        #left {
+            background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOvYeUc1_3Cfj28rNDhzAyjXhyDcH-rPGwLQ&usqp=CAU);
+            background-size: cover;
+            background-position: center;
+        }
+
+        #right {
+            background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3g1TcTt3Z9fjhT6_lcZt_jXLdTrlLQoapeg&usqp=CAU);
+            background-size: cover;
+            background-position: center;
+        }
+
+        #center {
+            flex: 1;
+            text-align: center;
+            padding: 20px;
+            width: 100px;
+            height: 600PX;
+        }
+
+        #center p {
+            font-weight: 600;
+            color: rgb(0, 0, 0);
+        }
+
+        #center img{
+            width: 100%;
+            height: 100%;
+        }
+        p {
+            font-size: 18px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+    <nav id="navigation">
+        <img class="img" src="https://www.acmilan.com/images/social/acmilan.png" alt="">
+        <h1>AC MILAN</h1>
+        <ul>
+            <li><a href="#">NEWS</a></li>
+            <li><a href="#">BIGLIETTERIA</a></li>
+            <li><a href="#">SQUADRA </a></li>
+        </ul>
+    </nav>
+
+    <div id="container">
+        <div id="left"></div>
+        <div id="center">
+            <img src="https://www.repstatic.it/content/nazionale/img/2022/05/22/205557155-64dfd35e-469d-4368-96a2-1b4d94426d1d.jpg" alt="">
+            <p>MILAN CAMPIONE D'ITALIA 2021/2022</p>
+        </div>
+        <div id="right"></div>
+    </div>
+
+</body>
+</html>

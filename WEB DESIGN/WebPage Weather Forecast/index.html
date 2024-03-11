@@ -26,22 +26,27 @@
             
             <div class="weatherForm mt-4">
                 <form action="">
+                    <!--CHIEDERE COME ALLINEARE GLI INPUT ALL'ESTREMITA ESTERNO DEL DIV-->
                     <div class="formRow d-flex text-white">
-                        <div class="field flex-fill me-5 d-flex flex-column align-items-center">
-                            <label for="lat">Latitudine</label>
-                            <input class="d-block" type="text" name="lat" id="lat" placeholder="51.44">
+                        <div class="field flex-fill d-flex flex-column align-items-center">
+                            <label for="lat" class="fs-5">Latitudine</label>
+                            <input class="d-block" value="undefined" type="text" name="lat" id="lat" placeholder="51.44">
                         </div>
-                        <div class="field flex-fill ms-5 d-flex flex-column align-items-center">
-                            <label for="lng">Longitudine</label>
-                            <input class="d-block" type="text" name="lng" id="lng" placeholder="51.44">
+                        <div class="cityField flex-fill d-flex flex-column align-items-center">
+                            <label for="lng" class="fs-5">Località</label>
+                            <input class="d-block" value="undefined" type="text" name="locality" id="locality" placeholder="New York, USA">
                         </div>
+                        <div class="field flex-fill d-flex flex-column align-items-center">
+                            <label for="lng" class="fs-5">Longitudine</label>
+                            <input class="d-block" value="undefined" type="text" name="lng" id="lng" placeholder="51.44">
+                        </div>  
                     </div>
     
                     <div class="formRow d-flex mt-2">
-                        <div class="field flex-fill me-5 d-flex justify-content-center">
+                        <div class="field flex-fill d-flex justify-content-center">
                             <input class="d-block btn btn-danger" type="reset" value="Reset">
                         </div>
-                        <div class="field flex-fill ms-5 d-flex justify-content-center">
+                        <div class="field flex-fill d-flex justify-content-center">
                             <input class="d-block btn btn-success" type="submit" value="Richiedi Dati">
                         </div>
                     </div>

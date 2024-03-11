@@ -3,6 +3,7 @@
 
 let latInput = document.querySelector("#lat")
 let lngInput = document.querySelector("#lng")
+let localityInput = document.querySelector("#locality")
 
 
 navigator.geolocation.getCurrentPosition (
