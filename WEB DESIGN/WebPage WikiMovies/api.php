@@ -2,11 +2,11 @@
     require_once("db_query.php");
 
     if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-        if ($_SERVER['PATH_INFO'] == "movies") {
+        if ($_SERVER['PATH_INFO'] == '/movies') {
             //localhost:8000/api.php/movies
             //qui estraggo i file
 
-            $movies = get_movies($_GET[$title]);
+            $movies = get_movies();
 
             http_response_code(200);
             header("Content-Type: application/json");
@@ -15,11 +15,12 @@
                 "message" => "OK",
                 "payload" => $movies
             ]);
-        } else if ($_SERVER['PATH_INFO'] == "actors") {
+        } else if ($_SERVER['PATH_INFO'] == '/actors') {
             //localhost:8000/api.php/actors
             //qui estraggo i file
 
-            $actors = get_actors($_GET[$name]);
+            $actors = get_actors();
+            
             http_response_code(200);
             header("Content-Type: application/json");
             echo json_encode([
@@ -27,11 +28,11 @@
                 "message" => "OK",
                 "payload" => $actors
             ]);
-        } else if ($_SERVER['PATH_INFO'] == "directors") {
+        } else if ($_SERVER['PATH_INFO'] == '/directors') {
             //localhost:8000/api.php/directors
             //qui estraggo i file
 
-            $directors = get_directors($_GET[$name]);
+            $directors = get_directors();
 
             http_response_code(200);
             header("Content-Type: application/json");
@@ -40,11 +41,11 @@
                 "message" => "OK",
                 "payload" => $directors
             ]);
-        } else if ($_SERVER['PATH_INFO'] == "genre") {
-            //localhost:8000/api.php/genre
+        } else if ($_SERVER['PATH_INFO'] == '/genres') {
+            //localhost:8000/api.php/genres
             //qui estraggo i file
 
-            $genres = get_genres($_GET[$name]);
+            $genres = get_genres();
 
             http_response_code(200);
             header("Content-Type: application/json");
@@ -65,8 +66,4 @@
     }
 
     exit;
-
-    //localhost:8000/api.php/movies
-    //localhost:8000/api.php/actors
-    //localhost:8000/api.php/directors
-    //localhost:8000/api.php/genres
+?>
