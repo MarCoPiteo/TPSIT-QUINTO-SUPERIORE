@@ -6,7 +6,14 @@
             //localhost:8000/api.php/movies
             //qui estraggo i file
 
-            $movies = get_movies();
+            if (isset($_GET['title'])) {
+                $user_input = $_GET['title'];
+            } else {
+                $user_input = NULL;
+            }
+
+            $movies = get_movies($user_input);
+
 
             http_response_code(200);
             header("Content-Type: application/json");
@@ -19,7 +26,14 @@
             //localhost:8000/api.php/actors
             //qui estraggo i file
 
-            $actors = get_actors();
+            if (isset($_GET['last_name'])) {
+                $user_input = $_GET['last_name'];;
+            } else {
+                $user_input = NULL;
+            }
+
+            $actors = get_actors($user_input);
+
             
             http_response_code(200);
             header("Content-Type: application/json");
@@ -32,7 +46,14 @@
             //localhost:8000/api.php/directors
             //qui estraggo i file
 
-            $directors = get_directors();
+            if (isset($_GET['last_name'])) {
+                $user_input = $_GET['last_name'];;
+            } else {
+                $user_input = NULL;
+            }
+
+            $directors = get_directors($user_input);
+
 
             http_response_code(200);
             header("Content-Type: application/json");
@@ -45,7 +66,14 @@
             //localhost:8000/api.php/genres
             //qui estraggo i file
 
-            $genres = get_genres();
+            if (isset($_GET['name'])) {
+                $user_input = $_GET['name'];;
+            } else {
+                $user_input = NULL;
+            }
+
+            $genres = get_genres($user_input);
+            
 
             http_response_code(200);
             header("Content-Type: application/json");
