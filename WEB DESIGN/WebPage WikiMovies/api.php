@@ -8,9 +8,16 @@
 
             if (isset($_GET['title'])) {
                 $user_input = $_GET['title'];
+            } else if (isset($_GET['synopsis'])) {
+                $user_input = $_GET['synopsis'];
+            } else if (isset($_GET['duration'])) {
+                $user_input = $_GET['duration'];
+            } else if (isset($_GET['released_year'])) {
+                $user_input = $_GET['released_year'];
             } else {
                 $user_input = NULL;
             }
+            //IL FILTRO SUL POSTER È INUTILE FARLO
 
             $movies = get_movies($user_input);
 
@@ -28,9 +35,13 @@
 
             if (isset($_GET['last_name'])) {
                 $user_input = $_GET['last_name'];;
+            } else if (isset($_GET['name'])) {
+                $user_input = $_GET['name'];
             } else {
                 $user_input = NULL;
             }
+            //MANCA FILTRO DATA NASCITA
+            //MANCA FILTRO CON PIU CAMPI
 
             $actors = get_actors($user_input);
 
@@ -48,9 +59,13 @@
 
             if (isset($_GET['last_name'])) {
                 $user_input = $_GET['last_name'];;
+            } else if (isset($_GET['name'])) {
+                $user_input = $_GET['name'];
             } else {
                 $user_input = NULL;
             }
+            //MANCA FILTRO DATA NASCITA
+            //MANCA FILTRO CON PIU CAMPI
 
             $directors = get_directors($user_input);
 
@@ -68,7 +83,9 @@
 
             if (isset($_GET['name'])) {
                 $user_input = $_GET['name'];;
-            } else {
+            } /*else if (isset($_GET['slug'])) {    CAPIRE SE SERVE FARLO
+                $user_input = $_GET['slug'];
+            }*/ else {
                 $user_input = NULL;
             }
 

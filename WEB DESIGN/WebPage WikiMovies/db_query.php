@@ -9,7 +9,16 @@ function get_movies($user_input) {  //FUNZIONA
     }
 
     if ($user_input !== NULL) {
-        $query = 'SELECT * FROM movie WHERE title LIKE "%'.$user_input.'%"';
+        if (isset($_GET['title'])) {
+            $query = 'SELECT * FROM movie WHERE title LIKE "%'.$user_input.'%"';
+        } /*else if (isset($_GET['synopsis'])) {    BISOGNA CAPIRE COME GESTIRE LA RICERCA PER SINOSSI
+            $query = 'SELECT * FROM movie WHERE synopsis LIKE "%'.$user_input.'%"';
+        }*/ /*else if (isset($_GET['duration'])) {   VA FATTO CON UN INTERVALLO DI TEMPO
+            $query = 'SELECT * FROM movie WHERE duration LIKE "%'.$user_input.'%"';
+        }*/ else if (isset($_GET['released_year'])) {
+            $query = 'SELECT * FROM movie WHERE released_year LIKE "%'.$user_input.'%"';
+        }
+        //IL FILTRO SUL POSTER È INUTILE FARLO
     } else if ($user_input === NULL) {
         $query = 'SELECT * FROM movie';
     }
@@ -37,7 +46,13 @@ function get_actors($user_input) {  //FUNZIONA
     }
 
     if ($user_input !== NULL) {
-        $query = 'SELECT * FROM actor WHERE last_name LIKE "%'.$user_input.'%"';
+        if (isset($_GET['last_name'])) {
+            $query = 'SELECT * FROM actor WHERE last_name LIKE "%'.$user_input.'%"';
+        } else if (isset($_GET['name'])) {  
+            $query = 'SELECT * FROM actor WHERE name LIKE "%'.$user_input.'%"';
+        }
+        //MANCA FILTRO DATA NASCITA
+        //MANCA FILTRO CON PIU CAMPI
     } else if ($user_input === NULL) {
         $query = 'SELECT * FROM actor';
     }
@@ -64,8 +79,16 @@ function get_directors($user_input) {  //FUNZIONA
         exit();
     }
 
+    
     if ($user_input !== NULL) {
-        $query = 'SELECT * FROM director WHERE last_name LIKE "%'.$user_input.'%"';
+        if (isset($_GET['last_name'])) {
+            $query = 'SELECT * FROM director WHERE last_name LIKE "%'.$user_input.'%"';
+        } else if (isset($_GET['name'])) {  
+            $query = 'SELECT * FROM director WHERE name LIKE "%'.$user_input.'%"';
+        }
+        //MANCA FILTRO DATA NASCITA
+        //MANCA FILTRO CON PIU CAMPI
+        
     } else if ($user_input === NULL) {
         $query = 'SELECT * FROM director';
     }
@@ -93,7 +116,11 @@ function get_genres($user_input) {  //FUNZIONA
     }
 
     if ($user_input !== NULL) {
-        $query = 'SELECT * FROM genre WHERE name LIKE "%'.$user_input.'%"';
+        if (isset($_GET['name'])) {  
+            $query = 'SELECT * FROM genre WHERE name LIKE "%'.$user_input.'%"';
+        } /*else if (isset($_GET['slug'])) {  
+            $query = 'SELECT * FROM genre WHERE slug LIKE "%'.$user_input.'%"';
+        }*/
     } else if ($user_input === NULL) {
         $query = 'SELECT * FROM genre';
     }
@@ -113,47 +140,4 @@ function get_genres($user_input) {  //FUNZIONA
 
 // fetch_assoc() restituisce un array associativo | chiave - valore
 // fecth_array() restituisce un array di array | 0 - n, gli indici dipendono dalla query
-
-
-/*
-echo "<script>alert('ciaoo');</script>";
-$movies = array();
-
-while ($row = $result->fetch_assoc()) {
-    echo $row['title'];
-    $movies[] = $row;
-}
-
-function get_movies() {
-    if(isset($title)) {  // FILTRAGGIO SE L'UTENTE VUOLE UN FILM SPECIFICO
-        // SELECT * WHERE ...
-    } else {  // SE L'UTENTE VUOLE TUTTI I FILM
-        // SELECT * FROM ... 
-    }
-}
-
-function get_actors($name) {
-    if(isset($name)) {  // FILTRAGGIO SE L'UTENTE VUOLE UN FILM SPECIFICO
-        // SELECT * WHERE ...
-    } else {  // SE L'UTENTE VUOLE TUTTI I FILM
-        // SELECT * FROM ... 
-    }
-}
-
-function get_directors($name) {
-    if(isset($name)) {  // FILTRAGGIO SE L'UTENTE VUOLE UN FILM SPECIFICO
-        // SELECT * WHERE ...
-    } else {  // SE L'UTENTE VUOLE TUTTI I FILM
-        // SELECT * FROM ... 
-    }
-}
-
-function get_genres($name) {
-    if(isset($name)) {  // FILTRAGGIO SE L'UTENTE VUOLE UN FILM SPECIFICO
-        // SELECT * WHERE ...
-    } else {  // SE L'UTENTE VUOLE TUTTI I FILM
-        // SELECT * FROM ... 
-    }
-}
-*/
 ?>
