@@ -1,5 +1,5 @@
 <?php
-function get_movies($user_input) {  //FUNZIONA
+function get_movies($user_input, $filter) {  //FUNZIONA
     $movies = array();
 
     $mysqli = new mysqli("mysql","root","root","db_film");
@@ -9,13 +9,11 @@ function get_movies($user_input) {  //FUNZIONA
     }
 
     if ($user_input !== NULL) {
-        if (isset($_GET['title'])) {
+        if ($filter === 'title') {
             $query = 'SELECT * FROM movie WHERE title LIKE "%'.$user_input.'%"';
-        } /*else if (isset($_GET['synopsis'])) {    BISOGNA CAPIRE COME GESTIRE LA RICERCA PER SINOSSI
-            $query = 'SELECT * FROM movie WHERE synopsis LIKE "%'.$user_input.'%"';
-        }*/ /*else if (isset($_GET['duration'])) {   VA FATTO CON UN INTERVALLO DI TEMPO
+        } /*else if (isset($_GET['duration'])) {   VA FATTO CON UN INTERVALLO DI TEMPO
             $query = 'SELECT * FROM movie WHERE duration LIKE "%'.$user_input.'%"';
-        }*/ else if (isset($_GET['released_year'])) {
+        }*/ else if ($filter === 'released_year') {
             $query = 'SELECT * FROM movie WHERE released_year LIKE "%'.$user_input.'%"';
         }
         //IL FILTRO SUL POSTER È INUTILE FARLO
@@ -36,7 +34,7 @@ function get_movies($user_input) {  //FUNZIONA
 }
 
 
-function get_actors($user_input) {  //FUNZIONA
+function get_actors($user_input, $filter) {  //FUNZIONA
     $actors = array();
 
     $mysqli = new mysqli("mysql","root","root","db_film");
@@ -46,9 +44,9 @@ function get_actors($user_input) {  //FUNZIONA
     }
 
     if ($user_input !== NULL) {
-        if (isset($_GET['last_name'])) {
+        if ($filter === 'last_name') {
             $query = 'SELECT * FROM actor WHERE last_name LIKE "%'.$user_input.'%"';
-        } else if (isset($_GET['name'])) {  
+        } else if ($filter === 'name') {  
             $query = 'SELECT * FROM actor WHERE name LIKE "%'.$user_input.'%"';
         }
         //MANCA FILTRO DATA NASCITA
@@ -70,7 +68,7 @@ function get_actors($user_input) {  //FUNZIONA
 }
 
 
-function get_directors($user_input) {  //FUNZIONA
+function get_directors($user_input, $filter) {  //FUNZIONA
     $directors = array();
 
     $mysqli = new mysqli("mysql","root","root","db_film");
@@ -81,9 +79,9 @@ function get_directors($user_input) {  //FUNZIONA
 
     
     if ($user_input !== NULL) {
-        if (isset($_GET['last_name'])) {
+        if ($filter === 'last_name') {
             $query = 'SELECT * FROM director WHERE last_name LIKE "%'.$user_input.'%"';
-        } else if (isset($_GET['name'])) {  
+        } else if ($filter === 'name') {  
             $query = 'SELECT * FROM director WHERE name LIKE "%'.$user_input.'%"';
         }
         //MANCA FILTRO DATA NASCITA
@@ -106,7 +104,7 @@ function get_directors($user_input) {  //FUNZIONA
 }
 
 
-function get_genres($user_input) {  //FUNZIONA
+function get_genres($user_input, $filter) {  //FUNZIONA
     $genres = array();
 
     $mysqli = new mysqli("mysql","root","root","db_film");
@@ -116,11 +114,10 @@ function get_genres($user_input) {  //FUNZIONA
     }
 
     if ($user_input !== NULL) {
-        if (isset($_GET['name'])) {  
+        if ($filter === 'name') {  
             $query = 'SELECT * FROM genre WHERE name LIKE "%'.$user_input.'%"';
-        } /*else if (isset($_GET['slug'])) {  
-            $query = 'SELECT * FROM genre WHERE slug LIKE "%'.$user_input.'%"';
-        }*/
+        }
+        //NON SERVE IL FILTRO SULLO SLUG
     } else if ($user_input === NULL) {
         $query = 'SELECT * FROM genre';
     }

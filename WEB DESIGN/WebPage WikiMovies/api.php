@@ -8,18 +8,23 @@
 
             if (isset($_GET['title'])) {
                 $user_input = $_GET['title'];
+                $filter = 'title';
             } else if (isset($_GET['synopsis'])) {
                 $user_input = $_GET['synopsis'];
+                $filter = 'synopsis';
             } else if (isset($_GET['duration'])) {
                 $user_input = $_GET['duration'];
+                $filter = 'duration';
             } else if (isset($_GET['released_year'])) {
                 $user_input = $_GET['released_year'];
+                $filter = 'released_year';
             } else {
                 $user_input = NULL;
+                $filter = NULL;
             }
             //IL FILTRO SUL POSTER È INUTILE FARLO
 
-            $movies = get_movies($user_input);
+            $movies = get_movies($user_input, $filter);
 
 
             http_response_code(200);
@@ -34,16 +39,19 @@
             //qui estraggo i file
 
             if (isset($_GET['last_name'])) {
-                $user_input = $_GET['last_name'];;
+                $user_input = $_GET['last_name'];
+                $filter = 'last_name';
             } else if (isset($_GET['name'])) {
                 $user_input = $_GET['name'];
+                $filter = 'name';
             } else {
                 $user_input = NULL;
+                $filter = NULL;
             }
             //MANCA FILTRO DATA NASCITA
             //MANCA FILTRO CON PIU CAMPI
 
-            $actors = get_actors($user_input);
+            $actors = get_actors($user_input, $filter);
 
             
             http_response_code(200);
@@ -58,16 +66,19 @@
             //qui estraggo i file
 
             if (isset($_GET['last_name'])) {
-                $user_input = $_GET['last_name'];;
+                $user_input = $_GET['last_name'];
+                $filter = 'last_name';
             } else if (isset($_GET['name'])) {
                 $user_input = $_GET['name'];
+                $filter = 'name';
             } else {
                 $user_input = NULL;
+                $filter = NULL;
             }
             //MANCA FILTRO DATA NASCITA
             //MANCA FILTRO CON PIU CAMPI
 
-            $directors = get_directors($user_input);
+            $directors = get_directors($user_input, $filter);
 
 
             http_response_code(200);
@@ -82,14 +93,14 @@
             //qui estraggo i file
 
             if (isset($_GET['name'])) {
-                $user_input = $_GET['name'];;
-            } /*else if (isset($_GET['slug'])) {    CAPIRE SE SERVE FARLO
-                $user_input = $_GET['slug'];
-            }*/ else {
+                $user_input = $_GET['name'];
+                $filter = 'name';
+            } else {
                 $user_input = NULL;
+                $filter = NULL;
             }
 
-            $genres = get_genres($user_input);
+            $genres = get_genres($user_input, $filter);
             
 
             http_response_code(200);
