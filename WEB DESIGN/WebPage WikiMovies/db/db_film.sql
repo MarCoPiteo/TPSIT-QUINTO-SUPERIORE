@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql:3306
--- Creato il: Apr 10, 2024 alle 07:05
+-- Creato il: Apr 18, 2024 alle 08:58
 -- Versione del server: 8.0.36
 -- Versione PHP: 8.2.8
 
@@ -67,7 +67,21 @@ INSERT INTO `actor` (`id`, `name`, `last_name`, `birthday_date`) VALUES
 (27, 'Paul', 'Bettany', '1971-05-27'),
 (28, 'Alexis', 'Denisof', '1966-02-25'),
 (31, 'Aaron', 'Taylor-Johnson', '1990-06-13'),
-(32, 'Hayley', 'Atwell', '1982-04-05');
+(32, 'Hayley', 'Atwell', '1982-04-05'),
+(33, 'Liam', 'Neeson', '1952-06-07'),
+(34, 'Ewan', 'McGregor', '1971-03-31'),
+(35, 'Natalie', 'Portman', '1981-06-09'),
+(36, 'Jake', 'Lloyd', '1989-03-05'),
+(37, 'Ian', 'McDiarmid', '1944-08-11'),
+(38, 'Anthony', 'Daniels', '1946-02-21'),
+(39, 'Kenny', 'Baker', '1934-08-24'),
+(40, 'Frank', 'Oz', '1944-05-25'),
+(41, 'Terence', 'Stamp', '1938-07-22'),
+(42, 'Ray', 'Park', '1974-08-23'),
+(43, 'Ahmed', 'Best', '1973-08-19'),
+(44, 'Pernilla', 'August', '1958-02-13'),
+(45, 'Samuel', 'L. Jackson', '1948-12-21'),
+(46, 'Keira', 'Knightley', '1985-03-26');
 
 -- --------------------------------------------------------
 
@@ -88,7 +102,8 @@ CREATE TABLE `director` (
 
 INSERT INTO `director` (`id`, `name`, `last_name`, `birthday_date`) VALUES
 (1, 'Christopher ', 'Nolan', '1970-07-30'),
-(2, 'Joss', 'Whedon', '2064-06-23');
+(2, 'Joss', 'Whedon', '1964-06-23'),
+(3, 'George ', 'Lucas', '1944-05-14');
 
 -- --------------------------------------------------------
 
@@ -110,7 +125,8 @@ INSERT INTO `genre` (`id`, `name`, `slug`) VALUES
 (1, 'Adventure', NULL),
 (2, 'Sci-fi', NULL),
 (3, 'Action', NULL),
-(4, 'Fantastic Cinema ', NULL);
+(4, 'Fantastic Cinema', NULL),
+(5, 'Family', NULL);
 
 -- --------------------------------------------------------
 
@@ -133,7 +149,8 @@ CREATE TABLE `movie` (
 
 INSERT INTO `movie` (`id`, `synopsis`, `title`, `duration`, `released_year`, `poster`) VALUES
 (1, 'In an unspecified future, drastic climate change will hit agriculture hard. Corn is the only crop still capable of growing and a group of scientists intends to cross space to find new places suitable for growing it.', 'Interstellar', 169, '2014', 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTKNvN1d8BSJPWenCvCOx2oOTDYqBSzjLkuDplC6Iw89KZONqnk'),
-(2, 'Legendary superheroes Iron Man, Hulk, Thor, Captain America, Hawkeye and Black Widow are recruited by a secret government agency to fight an unexpected enemy that threatens the safety of Earth.', 'The Avengers', 143, '2012', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfj-Xxr1DlcuFjU4Nj0ZHm2rmEn0e7BBU0xQZzQedaWODnFw7Q');
+(2, 'Legendary superheroes Iron Man, Hulk, Thor, Captain America, Hawkeye and Black Widow are recruited by a secret government agency to fight an unexpected enemy that threatens the safety of Earth.', 'The Avengers', 143, '2012', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfj-Xxr1DlcuFjU4Nj0ZHm2rmEn0e7BBU0xQZzQedaWODnFw7Q'),
+(3, 'Thanks to the teachings of an elderly Jedi master, young Anakin Skywalker learns to master the incredible powers of the Force.', 'Star Wars: Episode I - The Phantom Menace', 133, '1999', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiVeIJ--V37E_33dFxQ0ZvxghN2yJKDQcAZRDtEw4gz7oajGCa');
 
 -- --------------------------------------------------------
 
@@ -142,8 +159,8 @@ INSERT INTO `movie` (`id`, `synopsis`, `title`, `duration`, `released_year`, `po
 --
 
 CREATE TABLE `movie_actor` (
-  `movie_id` int DEFAULT NULL,
-  `actor_id` int DEFAULT NULL
+  `movie_id` int NOT NULL,
+  `actor_id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -176,10 +193,24 @@ INSERT INTO `movie_actor` (`movie_id`, `actor_id`) VALUES
 (2, 24),
 (2, 25),
 (2, 26),
-(2, 28),
+(2, 27),
 (2, 28),
 (2, 31),
-(2, 32);
+(2, 32),
+(3, 33),
+(3, 34),
+(3, 35),
+(3, 36),
+(3, 37),
+(3, 38),
+(3, 39),
+(3, 40),
+(3, 41),
+(3, 42),
+(3, 43),
+(3, 44),
+(3, 45),
+(3, 46);
 
 -- --------------------------------------------------------
 
@@ -188,8 +219,8 @@ INSERT INTO `movie_actor` (`movie_id`, `actor_id`) VALUES
 --
 
 CREATE TABLE `movie_director` (
-  `movie_id` int DEFAULT NULL,
-  `director_id` int DEFAULT NULL
+  `movie_id` int NOT NULL,
+  `director_id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -198,7 +229,8 @@ CREATE TABLE `movie_director` (
 
 INSERT INTO `movie_director` (`movie_id`, `director_id`) VALUES
 (1, 1),
-(2, 2);
+(2, 2),
+(3, 3);
 
 -- --------------------------------------------------------
 
@@ -207,8 +239,8 @@ INSERT INTO `movie_director` (`movie_id`, `director_id`) VALUES
 --
 
 CREATE TABLE `movie_genre` (
-  `movie_id` int DEFAULT NULL,
-  `genre_id` int DEFAULT NULL
+  `movie_id` int NOT NULL,
+  `genre_id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -219,7 +251,9 @@ INSERT INTO `movie_genre` (`movie_id`, `genre_id`) VALUES
 (1, 1),
 (1, 2),
 (2, 3),
-(2, 4);
+(2, 4),
+(3, 2),
+(3, 5);
 
 --
 -- Indici per le tabelle scaricate
@@ -253,6 +287,7 @@ ALTER TABLE `movie`
 -- Indici per le tabelle `movie_actor`
 --
 ALTER TABLE `movie_actor`
+  ADD PRIMARY KEY (`movie_id`,`actor_id`),
   ADD KEY `movie_id` (`movie_id`),
   ADD KEY `actor_id` (`actor_id`);
 
@@ -260,6 +295,7 @@ ALTER TABLE `movie_actor`
 -- Indici per le tabelle `movie_director`
 --
 ALTER TABLE `movie_director`
+  ADD PRIMARY KEY (`movie_id`,`director_id`),
   ADD KEY `movie_id` (`movie_id`),
   ADD KEY `director_id` (`director_id`);
 
@@ -267,6 +303,7 @@ ALTER TABLE `movie_director`
 -- Indici per le tabelle `movie_genre`
 --
 ALTER TABLE `movie_genre`
+  ADD PRIMARY KEY (`movie_id`,`genre_id`),
   ADD KEY `movie_id` (`movie_id`),
   ADD KEY `genre_id` (`genre_id`);
 
@@ -278,25 +315,25 @@ ALTER TABLE `movie_genre`
 -- AUTO_INCREMENT per la tabella `actor`
 --
 ALTER TABLE `actor`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT per la tabella `director`
 --
 ALTER TABLE `director`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT per la tabella `genre`
 --
 ALTER TABLE `genre`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT per la tabella `movie`
 --
 ALTER TABLE `movie`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Limiti per le tabelle scaricate
