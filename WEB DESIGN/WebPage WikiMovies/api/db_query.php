@@ -94,23 +94,41 @@ function get_actors($user_input, $filter) {  //FUNZIONA
     }
 
     if ($user_input !== NULL) {
-        $query = 'SELECT * FROM actor WHERE '. $filter .' LIKE "%'.$user_input.'%"';
+        $actorsQuery = 'SELECT * FROM actor WHERE '. $filter .' LIKE "%'.$user_input.'%"';
 
         /*if ($filter === 'last_name') {
-            $query = 'SELECT * FROM actor WHERE last_name LIKE "%'.$user_input.'%"';
+            $actorsQuery = 'SELECT * FROM actor WHERE last_name LIKE "%'.$user_input.'%"';
         } else if ($filter === 'name') {  
-            $query = 'SELECT * FROM actor WHERE name LIKE "%'.$user_input.'%"';
+            $actorsQuery = 'SELECT * FROM actor WHERE name LIKE "%'.$user_input.'%"';
         }*/
         //MANCA FILTRO DATA NASCITA
         //MANCA FILTRO CON PIU CAMPI
     } else if ($user_input === NULL) {
-        $query = 'SELECT * FROM actor';
+        $actorsQuery = 'SELECT * FROM actor';
     }
 
-    $result = $mysqli -> query($query);
+    $actorsResult = $mysqli -> query($actorsQuery);
 
-    while ($row = $result -> fetch_assoc()) {
-        $actors[] = $row;
+    while ($actorsRow = $actorsResult -> fetch_assoc()) {
+        $actors[] = $actorsRow;
+
+        $last_actor = $actors[count($actors) - 1];
+        $actorID = $last_actor['id'];
+
+
+        //MOVIES
+        $moviesQuery = 'SELECT movie.* FROM movie_actor 
+        INNER JOIN movie ON movie.id = movie_actor.movie_id
+        WHERE movie_actor.actor_id = '. $actorID;
+
+        $moviesResult = $mysqli -> query($moviesQuery);
+        if (!$moviesResult) {
+            die("Error retrieving actors for movie $actorID: " . $mysqli -> connect_error);
+        }
+
+        while ($moviesRow = $moviesResult -> fetch_assoc()) {
+            $actors[count($actors) - 1]['movies'][] = $moviesRow;
+        }
     }
 
 
@@ -131,24 +149,42 @@ function get_directors($user_input, $filter) {  //FUNZIONA
 
     
     if ($user_input !== NULL) {
-        $query = 'SELECT * FROM director WHERE '. $filter .' LIKE "%'.$user_input.'%"';
+        $directorsQuery = 'SELECT * FROM director WHERE '. $filter .' LIKE "%'.$user_input.'%"';
 
         /*if ($filter === 'last_name') {
-            $query = 'SELECT * FROM director WHERE last_name LIKE "%'.$user_input.'%"';
+            $directorsQuery = 'SELECT * FROM director WHERE last_name LIKE "%'.$user_input.'%"';
         } else if ($filter === 'name') {  
-            $query = 'SELECT * FROM director WHERE name LIKE "%'.$user_input.'%"';
+            $directorsQuery = 'SELECT * FROM director WHERE name LIKE "%'.$user_input.'%"';
         }*/
         //MANCA FILTRO DATA NASCITA
         //MANCA FILTRO CON PIU CAMPI
         
     } else if ($user_input === NULL) {
-        $query = 'SELECT * FROM director';
+        $directorsQuery = 'SELECT * FROM director';
     }
     
-    $result = $mysqli -> query($query);
+    $directorsResult = $mysqli -> query($directorsQuery);
 
-    while ($row = $result -> fetch_assoc()) {
-        $directors[] = $row;
+    while ($directorsRow = $directorsResult -> fetch_assoc()) {
+        $directors[] = $directorsRow;
+
+        $last_director = $directors[count($directors) - 1];
+        $directorID = $last_director['id'];
+
+
+        //MOVIES
+        $moviesQuery = 'SELECT movie.* FROM movie_director 
+        INNER JOIN movie ON movie.id = movie_director.movie_id
+        WHERE movie_director.director_id = '. $directorID;
+
+        $moviesResult = $mysqli -> query($moviesQuery);
+        if (!$moviesResult) {
+            die("Error retrieving directors for movie $directorID: " . $mysqli -> connect_error);
+        }
+
+        while ($moviesRow = $moviesResult -> fetch_assoc()) {
+            $directors[count($directors) - 1]['movies'][] = $moviesRow;
+        }
     }
 
 
@@ -168,17 +204,35 @@ function get_genres($user_input, $filter) {  //FUNZIONA
     }
 
     if ($user_input !== NULL) {
-        $query = 'SELECT * FROM genre WHERE '. $filter .' LIKE "%'.$user_input.'%"';
+        $genresQuery = 'SELECT * FROM genre WHERE '. $filter .' LIKE "%'.$user_input.'%"';
 
         //NON SERVE IL FILTRO SULLO SLUG
     } else if ($user_input === NULL) {
-        $query = 'SELECT * FROM genre';
+        $genresQuery = 'SELECT * FROM genre';
     }
 
-    $result = $mysqli -> query($query);
+    $geresResult = $mysqli -> query($genresQuery);
 
-    while ($row = $result -> fetch_assoc()) {
-        $genres[] = $row;
+    while ($genresRow = $geresResult -> fetch_assoc()) {
+        $genres[] = $genresRow;
+
+        $last_genre = $genres[count($genres) - 1];
+        $genreID = $last_genre['id'];
+
+
+        //MOVIES
+        $moviesQuery = 'SELECT movie.* FROM movie_genre 
+        INNER JOIN movie ON movie.id = movie_genre.movie_id
+        WHERE movie_genre.genre_id = '. $genreID;
+
+        $moviesResult = $mysqli -> query($moviesQuery);
+        if (!$moviesResult) {
+            die("Error retrieving genres for movie $genreID: " . $mysqli -> connect_error);
+        }
+
+        while ($moviesRow = $moviesResult -> fetch_assoc()) {
+            $genres[count($genres) - 1]['movies'][] = $moviesRow;
+        }
     }
 
 

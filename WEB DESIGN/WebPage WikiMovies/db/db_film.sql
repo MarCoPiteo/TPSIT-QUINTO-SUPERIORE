@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql:3306
--- Creato il: Apr 18, 2024 alle 08:58
+-- Creato il: Apr 20, 2024 alle 18:34
 -- Versione del server: 8.0.36
 -- Versione PHP: 8.2.8
 
@@ -81,7 +81,18 @@ INSERT INTO `actor` (`id`, `name`, `last_name`, `birthday_date`) VALUES
 (43, 'Ahmed', 'Best', '1973-08-19'),
 (44, 'Pernilla', 'August', '1958-02-13'),
 (45, 'Samuel', 'L. Jackson', '1948-12-21'),
-(46, 'Keira', 'Knightley', '1985-03-26');
+(46, 'Keira', 'Knightley', '1985-03-26'),
+(47, 'Edward', 'Norton', '1969-08-18'),
+(48, 'Brad', 'Pitt', '1963-12-18'),
+(49, 'Helena', 'Bonham Carter', '1966-05-26'),
+(50, 'Meat', 'Loaf', '1947-09-27'),
+(51, 'Jared', 'Leto', '1971-12-26'),
+(52, 'Zach', 'Grenier', '1954-02-12'),
+(53, 'Richmond', 'Arquette', '1963-08-21'),
+(54, 'David', 'Andrews', '1952-11-02'),
+(55, 'George', 'Maguire', '1976-06-30'),
+(56, 'Eugenie', 'Bondurant', '1961-07-27'),
+(57, 'Christina', 'Cabot', '1972-06-12');
 
 -- --------------------------------------------------------
 
@@ -103,7 +114,8 @@ CREATE TABLE `director` (
 INSERT INTO `director` (`id`, `name`, `last_name`, `birthday_date`) VALUES
 (1, 'Christopher ', 'Nolan', '1970-07-30'),
 (2, 'Joss', 'Whedon', '1964-06-23'),
-(3, 'George ', 'Lucas', '1944-05-14');
+(3, 'George ', 'Lucas', '1944-05-14'),
+(4, 'David', 'Fincher', '2062-08-28');
 
 -- --------------------------------------------------------
 
@@ -126,7 +138,9 @@ INSERT INTO `genre` (`id`, `name`, `slug`) VALUES
 (2, 'Sci-fi', NULL),
 (3, 'Action', NULL),
 (4, 'Fantastic Cinema', NULL),
-(5, 'Family', NULL);
+(5, 'Family', NULL),
+(6, 'Thriller', NULL),
+(7, 'Mystery ', NULL);
 
 -- --------------------------------------------------------
 
@@ -150,7 +164,8 @@ CREATE TABLE `movie` (
 INSERT INTO `movie` (`id`, `synopsis`, `title`, `duration`, `released_year`, `poster`) VALUES
 (1, 'In an unspecified future, drastic climate change will hit agriculture hard. Corn is the only crop still capable of growing and a group of scientists intends to cross space to find new places suitable for growing it.', 'Interstellar', 169, '2014', 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTKNvN1d8BSJPWenCvCOx2oOTDYqBSzjLkuDplC6Iw89KZONqnk'),
 (2, 'Legendary superheroes Iron Man, Hulk, Thor, Captain America, Hawkeye and Black Widow are recruited by a secret government agency to fight an unexpected enemy that threatens the safety of Earth.', 'The Avengers', 143, '2012', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfj-Xxr1DlcuFjU4Nj0ZHm2rmEn0e7BBU0xQZzQedaWODnFw7Q'),
-(3, 'Thanks to the teachings of an elderly Jedi master, young Anakin Skywalker learns to master the incredible powers of the Force.', 'Star Wars: Episode I - The Phantom Menace', 133, '1999', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiVeIJ--V37E_33dFxQ0ZvxghN2yJKDQcAZRDtEw4gz7oajGCa');
+(3, 'Thanks to the teachings of an elderly Jedi master, young Anakin Skywalker learns to master the incredible powers of the Force.', 'Star Wars: Episode I - The Phantom Menace', 133, '1999', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiVeIJ--V37E_33dFxQ0ZvxghN2yJKDQcAZRDtEw4gz7oajGCa'),
+(4, 'Tyler Durden and a new friend vent their aggression by creating a fight club, which quickly takes on revolutionary overtones, eventually exposing the true identity of Tyler Durden.', 'Fight Club', 139, '1999', 'https://cultura.biografieonline.it/wp-content/uploads/2012/09/Fight-Club-locandina.jpg');
 
 -- --------------------------------------------------------
 
@@ -210,7 +225,18 @@ INSERT INTO `movie_actor` (`movie_id`, `actor_id`) VALUES
 (3, 43),
 (3, 44),
 (3, 45),
-(3, 46);
+(3, 46),
+(4, 47),
+(4, 48),
+(4, 49),
+(4, 50),
+(4, 51),
+(4, 52),
+(4, 53),
+(4, 54),
+(4, 55),
+(4, 56),
+(4, 57);
 
 -- --------------------------------------------------------
 
@@ -230,7 +256,8 @@ CREATE TABLE `movie_director` (
 INSERT INTO `movie_director` (`movie_id`, `director_id`) VALUES
 (1, 1),
 (2, 2),
-(3, 3);
+(3, 3),
+(4, 4);
 
 -- --------------------------------------------------------
 
@@ -253,7 +280,9 @@ INSERT INTO `movie_genre` (`movie_id`, `genre_id`) VALUES
 (2, 3),
 (2, 4),
 (3, 2),
-(3, 5);
+(3, 5),
+(4, 6),
+(4, 7);
 
 --
 -- Indici per le tabelle scaricate
@@ -315,25 +344,25 @@ ALTER TABLE `movie_genre`
 -- AUTO_INCREMENT per la tabella `actor`
 --
 ALTER TABLE `actor`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT per la tabella `director`
 --
 ALTER TABLE `director`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT per la tabella `genre`
 --
 ALTER TABLE `genre`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT per la tabella `movie`
 --
 ALTER TABLE `movie`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Limiti per le tabelle scaricate
