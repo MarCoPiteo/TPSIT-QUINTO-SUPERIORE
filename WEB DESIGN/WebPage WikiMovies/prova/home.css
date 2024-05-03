@@ -1,0 +1,113 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #242A32;
+}
+
+
+
+.centerAlignment {
+    margin-right: auto;
+    margin-left: auto;
+}
+.textCenter {
+    text-align: center;
+}
+.flex {
+    display: flex;
+}
+.pos-relative {
+    position: relative;
+}
+.pos-absolute {
+    position: absolute;
+}
+
+.main-container {
+    max-width: 87.2%; /*327px*/
+    min-height: 100vh;    
+}
+
+
+/*INTESTAZIONE*/
+.film-question {
+    font-weight: 600;
+    font-size: 18px;
+    
+    color: #FFF;
+
+    margin-top: 42px;
+}
+
+
+/*BARRA DI RICERCA*/
+.search-bar {
+    width: 100%;
+    height: 42px;
+
+    border-radius: 16px;
+    outline: none;
+    border: none;
+    
+    background-color: #3A3F47;
+    color: #fff;
+    font-size: 14px;
+
+    margin-top: 24px;
+    padding-top: 5px;
+    padding-left: 12px;
+}
+.material-symbols-outlined {
+    color: #67686D;
+    right: 12px;
+    top: 44px;
+    transform: translateY(-45%);
+}
+::placeholder {
+    color: #67686D;
+}
+
+
+/*TOP FILM*/
+.top-movies {
+    margin-top: 21px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+    flex-wrap: nowrap;
+}
+
+.movie-big {
+    flex: 0 0 auto;
+    margin-right: 30px;
+    width: 144px;
+
+    display: inline-block;
+}
+.movie-big-image {
+    width: 100%;
+    border-radius: 16px;
+}
+.movie-big-num {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    font-size: 96px;
+
+    color: #242A32;
+    text-shadow: -0.5px 0.5px 0 #0296E5,
+    0.5px 0.5px 0 #0296E5,
+    0.5px -0.5px 0 #0296E5,
+    -0.5px -0.5px 0 #0296E5;
+    /*-webkit-text-stroke: 0.5px #0296E5;*/
+
+    z-index: 9999;
+
+    top: 139px;
+    left: -15px;
+}

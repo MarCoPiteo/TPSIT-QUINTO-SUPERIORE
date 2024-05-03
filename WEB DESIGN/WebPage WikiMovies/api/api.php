@@ -110,7 +110,17 @@
                 "message" => "OK",
                 "payload" => $genres
             ]);
-        }  
+        } else if ($_SERVER['PATH_INFO'] == '/user') {
+            $viewed_movies = get_viewedMovies($_GET['id']);
+
+            http_response_code(200);
+            header("Content-Type: application/json");
+            echo json_encode([
+                "status" => 200,
+                "message" => "OK",
+                "payload" => $viewed_movies
+            ]);
+        }
     } else {
         http_response_code(405);
         header("Content-Type: application/json");
