@@ -86,12 +86,13 @@ body {
 .movie-big {
     flex: 0 0 auto;
     margin-right: 30px;
-    width: 144px;
 
     display: inline-block;
 }
 .movie-big-image {
-    width: 100%;
+    width: 144px;
+    height: 210px;
+
     border-radius: 16px;
 }
 .movie-big-num {
