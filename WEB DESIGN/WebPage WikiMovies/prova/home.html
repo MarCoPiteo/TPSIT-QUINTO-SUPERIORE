@@ -61,25 +61,27 @@
             <nav class="categories-nav">
                 <ul class="categories-list flex">
                     <li class="categories-li listItem"> 
-                        <a href="#" class="categories-link link">For you</a>
+                        <a href="#" class="categories-link link category-select" data-category="forYou">For you</a>
                     </li>
                     <li class="categories-li listItem">
-                        <a href="#" class="categories-link link">Popular</a>
+                        <a href="#" class="categories-link link" data-category="popular">Popular</a>
                     </li>
                     <li class="categories-li listItem">
-                        <a href="#" class="categories-link link">Upcoming</a>
+                        <a href="#" class="categories-link link" data-category="upcoming">Upcoming</a>
                     </li>
                     <!--<li>
-                        <select name="" id=""></select>Categories
+                        <select name="" data-category=""></select>Categories
                     </li>-->
                     <li class="categories-li listItem">
-                        <a href="#" class="categories-link link">Top Rated</a>
+                        <a href="#" class="categories-link link" data-category="topRated">Top Rated</a>
                     </li>
                 </ul>
             </nav>
 
-            <div></div>
+            <div class="category-movies flex pos-relative"></div>
         </div>
     </div>
+
+    <script src="home.js"></script>
 </body>
 </html>

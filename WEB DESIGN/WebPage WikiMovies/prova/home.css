@@ -94,7 +94,6 @@ body {
     overflow-x: auto;
     overflow-y: hidden;
     flex-wrap: nowrap;
-
     /*z-index: 10;*/
 }
 
@@ -102,7 +101,7 @@ body {
     flex: 0 0 auto;
     margin-right: 30px;
 
-    display: inline-block;
+    /*display: inline-block;*/
 }
 .movie-big-image {
     width: 144px;
@@ -168,4 +167,26 @@ body {
     font-weight: 600;
 
     transition: all 0.3s ease-in-out;
+}
+
+
+/*MOVIES WITH CATEGORIES*/
+.category-movies {
+    margin-top: 20px;
+
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.movie-mini {
+    flex: 0 0 auto; 
+}
+.movie-mini-image {
+    width: 100px;
+    height: 145px;
+
+    border-radius: 16px;
+}
+.movie-mini:last-child {
+    margin-right: 0;
 }
