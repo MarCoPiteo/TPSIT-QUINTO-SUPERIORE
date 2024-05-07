@@ -3,3 +3,4 @@
 - capire se nella pagine di ricerca si vuole mettere un selettore per categorie. e come lo si vuole fare (stavo pensando a far comparire
     prima una schermata che permette di scegliere tra categorie o per nome)
 - serve usare flex grow 1 sui film piccoli?
+- come faccio a lasciare la linea attivata quando scelgo una categoria?

@@ -161,12 +161,18 @@ body {
 
     transition: all 0.5s ease-in-out;
 }
-
 .categories-link:hover {
     cursor: pointer;
     font-weight: 600;
 
     transition: all 0.3s ease-in-out;
+}
+.categories-link .categories-select::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #0296E5;
 }
 
 
