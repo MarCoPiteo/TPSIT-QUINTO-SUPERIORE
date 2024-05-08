@@ -4,3 +4,5 @@
     prima una schermata che permette di scegliere tra categorie o per nome)
 - serve usare flex grow 1 sui film piccoli?
 - come faccio a lasciare la linea attivata quando scelgo una categoria?
+- sul telefono, i mini movies vengono visualizzati in due colonne, per via della grandezza credo dell'immagine. mettendola in %, da problemi 
+    di visualizzazione e non va più a capo. Come risolvo?

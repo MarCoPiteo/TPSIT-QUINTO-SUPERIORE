@@ -187,6 +187,23 @@ body {
 .movie-mini {
     flex: 0 0 auto; 
 }
+.movie-mini.animating {
+    animation-name: movies-entry;
+    animation-duration: 3s;
+}
+@keyframes movies-entry {
+    0%  {
+        opacity: 0; 
+        left:-100px; 
+        top:0px;
+    }
+
+    25% {
+        opacity: 1; 
+        left:0px; 
+        top:0px;
+    }
+}
 .movie-mini-image {
     width: 100px;
     height: 145px;
@@ -195,4 +212,18 @@ body {
 }
 .movie-mini:last-child {
     margin-right: 0;
+}
+
+
+/*BOTTOM MENU*/
+.bottom-menu {
+    border-top: 1.5px solid #0296E5;
+    background-color: #242A32; 
+
+    height: 70px; 
+    width: 100%;
+
+    position: fixed; 
+    bottom: 0; 
+    left: 0; 
 }

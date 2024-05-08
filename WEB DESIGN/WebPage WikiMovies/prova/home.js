@@ -39,16 +39,17 @@ function showCategory(category) {
         return movie.category === category;
     });
 
-    // Selezioniamo il contenitore dei film della categoria
     var categoryMoviesContainer = document.querySelector('.category-movies');
-
-    // Svuotiamo il contenitore dei film della categoria
     categoryMoviesContainer.innerHTML = '';
 
-    // Aggiungiamo i film della categoria al contenitore
-    categoryMovies.forEach(function(movie) {
-        var movieElement = createMovieElement(movie);
-        categoryMoviesContainer.appendChild(movieElement);
+    categoryMovies.forEach(function(movie, index) {
+        setTimeout(function() {
+            var movieElement = createMovieElement(movie);
+
+            movieElement.classList.add('animating');
+
+            categoryMoviesContainer.appendChild(movieElement);
+        }, index * 500);
     });
 }
 
