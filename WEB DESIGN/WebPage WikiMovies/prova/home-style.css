@@ -39,9 +39,12 @@ body {
 }
 
 .main-container {
-    max-width: 87.2%; /*327px*/
+    max-width: 90%; 
     min-height: 100vh;    
     z-index: 1;
+}
+::placeholder {
+    color: #67686D;
 }
 
 
@@ -79,9 +82,7 @@ body {
     top: 44px;
     transform: translateY(-45%);
 }
-::placeholder {
-    color: #67686D;
-}
+
 
 
 /*TOP FILM*/
@@ -181,11 +182,11 @@ body {
     margin-top: 20px;
 
     flex-wrap: wrap;
-    gap: 3.66%;
+    gap: 3%;
 }
 
 .movie-mini {
-    flex: 0 0 auto; 
+    flex: 0 1 90px; 
 }
 .movie-mini.animating {
     animation-name: movies-entry;
@@ -205,8 +206,7 @@ body {
     }
 }
 .movie-mini-image {
-    width: 100px;
-    height: 145px;
+    width: 100%;
 
     border-radius: 16px;
 }
