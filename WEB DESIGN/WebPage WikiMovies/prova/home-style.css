@@ -186,7 +186,7 @@ body {
 }
 
 .movie-mini {
-    flex: 0 1 90px; 
+    flex: 0 1 31%; 
 }
 .movie-mini.animating {
     animation-name: movies-entry;
