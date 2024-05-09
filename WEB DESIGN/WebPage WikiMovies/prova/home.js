@@ -53,11 +53,7 @@ function showCategory(category) {
     });
 }
 
-function createMovieElement(movie) {
-    // Creiamo un elemento div per il film
-    /*var movieDiv = document.createElement('div');
-    movieDiv.classList.add();*/
-
+function createMovieElement(movie) {    
     // Creiamo un elemento anchor per collegare il film
     var movieLink = document.createElement('a');
     movieLink.href = '#';
@@ -69,12 +65,7 @@ function createMovieElement(movie) {
     movieImage.alt = movie.title;
     movieImage.classList.add('movie-mini-image');
 
-    // Aggiungiamo l'immagine al collegamento
     movieLink.appendChild(movieImage);
 
-    /*// Aggiungiamo il collegamento al div del film
-    movieDiv.appendChild(movieLink);*/
-
-    // Restituiamo l'elemento del film
     return movieLink;
 }

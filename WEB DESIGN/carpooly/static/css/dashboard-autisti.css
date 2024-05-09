@@ -1,0 +1,198 @@
+:root {
+    --yellow: #ebb14d;
+    --darkblue: #3a3c6c;
+    --light: #cfd8ef;
+    --white: #fff;
+    --blue: #0004ff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: var(--white);
+    color: var(--darkblue);
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    align-items: center; /* Allinea gli elementi verticalmente */
+}
+
+header {
+    background-color: var(--white);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 0;
+}
+
+#map {
+    width: 500px;
+    height: 700px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.slide{
+    text-align: center;
+}
+/* Stile per la prima slide */
+#slide1 {
+    display: block;
+    margin: 100px auto;
+}
+
+#slide1 h2 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+#slide1 .form-group {
+    margin-bottom: 20px;
+}
+
+#slide1 .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+#slide1 .form-group input[type="text"],
+#slide1 .form-group input[type="date"],
+#slide1 .form-group input[type="number"] {
+    width: calc(100% - 22px); 
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    background: transparent;
+}
+
+#slide1 button {
+    background-color: var(--blue);
+    color: var(--white);
+    font-size: 1em;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#slide1 button:hover {
+    background-color: #0056b3;
+}
+
+/* Stile per la seconda slide */
+#slide2 {
+    display: none;
+    margin: 20px auto   ;
+}
+
+#slide2 h2 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+#slide2 .form-group {
+    margin-bottom: 20px;
+}
+
+#slide2 .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+#slide2 .form-group input[type="text"],
+#slide2 .form-group input[type="number"] {
+    width: calc(100% - 22px); 
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    background: transparent;
+}
+
+#slide2 button {
+    background-color: var(--blue);
+    color: var(--white);
+    font-size: 1em;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#slide2 button:hover {
+    background-color: #0056b3;
+}
+
+/* Stile per la terza slide */
+#slide3 {
+    display: none;
+    margin: 100px auto;
+    width: 535px;
+}
+
+#slide3 h2 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+#slide3 .summary {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+#slide3 .summary h2 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+#slide3 .summary p {
+    margin-bottom: 5px;
+    color: #555;
+}
+
+#slide3 .summary strong {
+    font-weight: bold;
+}
+
+#slide3 .summary span {
+    font-weight: normal;
+}
+
+#slide3 button {
+    background-color: var(--blue);
+    color: var(--white);
+    font-size: 1em;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#slide3 button:hover {
+    background-color: #0056b3;
+}
+
+.BtnGroup{
+    display: flex;
+    justify-content: space-around;
+}

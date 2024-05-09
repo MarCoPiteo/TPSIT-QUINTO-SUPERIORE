@@ -1,0 +1,458 @@
+:root {
+    --yellow: #ebb14d;
+    --darkblue: #3a3c6c;
+    --light: #cfd8ef;
+    --white: #fff;
+    --blue: #0004ff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: var(--white);
+    color: var(--darkblue);
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+
+header {
+    background-color: var(--white);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 0;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 10px;
+}
+
+.nav-links a {
+    color: var(--darkblue);
+    text-decoration: none;
+    margin-left: 20px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.nav-links a:hover {
+    background-color: var(--light);
+}
+
+.nav-links a:hover:last-child{
+    background: none;
+}
+
+.logo img {
+    width: auto;
+    height: 100px;
+}
+
+.user-icon {
+    border-radius: 100%;
+    width: 50px;
+    height: 50px;
+    position: relative;
+}
+
+.user-icon i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+}
+.folder-user{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+
+.menu{
+    background: var(--white);
+    width: 352px;
+    height: 250px;
+    position: absolute;
+    top: 10%;
+    left: 63%;
+    display: none;
+    z-index: 999;
+    border-radius: 10px;
+}
+
+.menu-item{
+    padding: 20px;
+    border: 1px solid black;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-radius: 10px;
+}
+
+.menu-item:hover{
+    background: var(--light);
+}
+
+.user-name{
+    text-align: center;
+}
+
+.content-image{
+    width: 100%;
+    height: 250px;
+    position: relative;
+    overflow: hidden;
+}
+
+.img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.content-image .content-title{
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 28px;
+}
+
+.search-ride-input{
+    background: var(--light);
+    width: 66%;
+    height: 56px;
+    position: absolute;
+    box-shadow: 0px 1px 8px 0px hsla(0, 0%, 0%, 0.2);
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.searching-form{
+    display: flex;
+}
+
+
+.searching-form .departure,
+.searching-form .destination,
+.searching-form .date,
+.searching-form .passenger,
+.searching-form .search{
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    height: 56px;
+    border: none;
+}
+
+
+
+.departure i{
+    margin: 20px 15px 20px 15px;
+}
+
+.destination i{
+    margin: 20px 15px 20px 15px;
+}
+
+
+
+.content-btn-date,
+.content-btn-passenger,
+.departure,
+.passenger{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    cursor: pointer;
+    border: none;
+}
+
+.departure-input,
+.destination-input{
+    border: none;
+    background: transparent;
+    outline: none;
+}
+
+
+.date i, .passenger i{
+    margin: 20px 15px 20px 15px;
+}
+
+.search .search-btn{
+    width: 100%;
+    border: none;
+    height: 56px;
+    padding: 0px 60px;
+    align-items: end;
+    position: relative;
+    z-index: 2;
+    background: var(--blue);
+    justify-content: flex-start;
+    color: white;
+    border-radius: 0px 16px 16px 0px;
+    cursor: pointer;
+}
+
+
+.departure{
+    margin-right: 8%;
+    margin-left: -16%;
+}
+
+.destiantion{
+    margin-left: 8%;
+    margin-right: 8%;
+}
+
+.date{  
+    margin-left: 8%;
+    margin-right: 8%;
+}
+
+.passenger{
+    margin-left: 8%;
+    margin-right: 12%;
+}
+
+
+.departure-input:focus,
+.destination-input:focus {
+    outline: none;
+}
+.departure {
+    margin-right: 20px; 
+}
+
+.destination {
+    margin-left: 20px; 
+}
+
+
+
+.citta-corrispondenti ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.citta-corrispondenti li {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #ccc;
+}
+
+.citta-corrispondenti li:last-child {
+    border-bottom: none;
+}
+
+.citta-corrispondenti li:hover {
+    background-color: #f0f0f0;
+}
+
+.departure-corrispondenti{
+    background: var(--light);
+    width: 290px;
+    height: 280px;
+    position: absolute;
+    left: 20%;
+    top: 38%;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+    display: none;
+}
+
+.destination-corrispondenti{
+    background: var(--light);
+    width: 290px;
+    height: 280px;
+    position: absolute;
+    left: 34%;
+    top: 38%;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+    display: none;
+}
+
+#calendario {
+    position: absolute;
+    z-index: 999;
+    display: none;
+    padding: 10px;
+    left: 41%;
+    top: 38%;
+}
+
+.format-date{
+    width: 373px;
+    height: 350px;
+    background: var(--light);
+    position: absolute;
+    left: 41%;
+    top: 40%;
+    border-radius: 16px;
+    z-index: 30;
+}
+
+.content-date{
+    padding: 16px 40px;
+    display: flex;
+    flex-direction: column  ;
+}
+
+.row-title{
+    display: block;
+    text-align: center;
+    position: relative;
+    width: 100%;
+    background: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.btn-i{
+    background: transparent;
+    border: none;
+}
+
+.btn-i i{
+    cursor: pointer;
+}
+
+.title-date{
+    font-size: 20px;
+    font-weight: 400;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+tbody{
+    display: table-row-group;
+}
+
+.tr-display{
+    display: table-row;
+}
+
+.td-styles{
+    display: table-cell;
+    padding: 8px;
+    cursor: pointer;
+    outline: none;
+}
+
+button{
+    background: none;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 400;
+    font-family: Arial, Helvetica, sans-serif;
+    border: none;
+}
+
+.content-number{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.td-styles:hover{
+    text-decoration: underline;
+}
+.n-d{
+    color: white;
+}
+
+.format-passenger{
+    width: 375px;
+    overflow-y: auto;
+    border: 1px solid var(--light);
+    border-radius: 16px;
+    box-shadow: 0px 1px 8px 0px var(--light);
+    background: var(--light);
+    z-index: 30;
+    position: absolute;
+    top: 40%;
+    left: 52%;
+    display: none;
+}
+
+.content-number-passenger{
+    padding-right: 0px;
+    padding-left: 0px;
+    padding-bottom: 16px;
+    padding-top: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    flex-direction: row;
+}
+
+.content-txt-passenger{
+    margin-left: 20px;
+}
+
+.notranslate{
+    padding-right: 24px;
+    padding-left: 0;
+    padding-bottom: 0;
+    padding-top: 0;
+}
+
+.less-btn{
+    padding-right: 10px;
+}
+
+.add-btn{
+    padding-left: 10px;
+}
+
+#Aprile{
+    display: block;
+}
+#Maggio, #Giugno, #Luglio{
+    display: none;
+}
+
+@media only screen and (max-width: 1440px){
+    .search-ride-input{
+        width: 83%;
+    }
+}

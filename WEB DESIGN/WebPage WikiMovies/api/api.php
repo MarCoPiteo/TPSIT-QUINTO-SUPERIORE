@@ -1,5 +1,6 @@
 <?php
     require_once("db_query.php");
+    require_once("recommendation.php");
 
     if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         if ($_SERVER['PATH_INFO'] == '/movies') {
@@ -111,7 +112,11 @@
                 "payload" => $genres
             ]);
         } else if ($_SERVER['PATH_INFO'] == '/user') {
-            $viewed_movies = get_viewedMovies($_GET['id']);
+            $a = [1, 0, 0, 0];
+            $b = [1, 0, 0, 1];
+            $dist = cosine_similarity($a, $b);
+
+            /*$viewed_movies = get_viewedMovies($_GET['id']);
 
             http_response_code(200);
             header("Content-Type: application/json");
@@ -119,7 +124,7 @@
                 "status" => 200,
                 "message" => "OK",
                 "payload" => $viewed_movies
-            ]);
+            ]);*/
         }
     } else {
         http_response_code(405);

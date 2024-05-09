@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Benvenuto su BlaBlaCar - Condividi i costi del viaggio, viaggia in sicurezza e scegli la flessibilità. Unisciti a noi per un'esperienza di viaggio unica.">
+    <title>Benvenuto su BlaBlaCar</title>
+    <link rel="icon" href="./static/img/images-removebg-preview (2).png">
+    <link rel="stylesheet" href="./static/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/af6ecfa2ff.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="container">
+                <div class="logo">
+                    <img src="./static/img/img/images.png" alt="BlaBlaCar Logo" width="145" height="87">
+                </div>
+                <div class="nav-links">
+                    <!--<a href="search-ride.html"><i class="fas fa-car"></i> Viaggi</a>
+                    <a href="reservation.html"><i class="fas fa-bookmark"></i> Prenotazioni</a>
+                    <a href="offer-ride.html"><i class="fas fa-hand-holding-heart"></i> Offri un passaggio</a>-->
+                    <a href="sign.html"><i class="fas fa-user"></i> Iscriviti / Accedi</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="content">
+            <div class="container">
+                <div class="col6_content">
+                    <h1 class="heading">Viaggiare in modo intelligente e conveniente</h1>
+                    <p>Condividi i costi del viaggio, viaggia in sicurezza e scegli la flessibilità. Unisciti a noi per un'esperienza di viaggio unica.</p>
+                    <a href="sign-autist.html" class="btn-r">Diventa anche tu un guidatore <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="col6">
+                    <img src="./static/img/img/taxi.png" class="taxi-img">
+                </div>
+            </div>
+        </section>
+        
+        
+        <section class="features">
+            <div class="container">
+                <div class="feature" onclick="showMap()">
+                    <div class="feature-info">
+                        <h2>Esplora nuovi percorsi</h2>
+                        <p>Utilizza la nostra mappa interattiva per scoprire nuovi percorsi e pianificare il tuo prossimo viaggio con facilità.</p>
+                    </div>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-users"></i>
+                    <h2>Condividi i costi</h2>
+                    <p>Dividi i costi del viaggio con altri passeggeri e risparmia.</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-shield-alt"></i>
+                    <h2>Viaggia in sicurezza</h2>
+                    <p>Valutazioni e recensioni degli utenti per garantire la sicurezza durante il viaggio.</p>
+                </div>
+            </div>
+        </section>
+        <div id="map"></div>
+    </main>
+    
+    
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 BlaBlaCar. Tutti i diritti riservati.</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" />
+    <script src="./static/js/script.js"></script>
+</body>
+</html>

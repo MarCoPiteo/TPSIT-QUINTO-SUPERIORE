@@ -1,0 +1,180 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f2f2f2;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 10px auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+header {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    width: 145px;
+    height: 87px;
+}
+
+main {
+    padding: 50px 0;
+    text-align: center;
+}
+
+.slide {
+    display: none;
+    text-align: center;
+}
+
+.form-heading {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group input[type="email"],
+.form-group input[type="text"],
+.form-group input[type="password"],
+.form-group input[type="date"],
+.form-group select{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    background: transparent;
+}
+
+.pagination {
+    margin-top: 20px;
+}
+
+.pagination span {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin: 0 5px;
+}
+
+.pagination span.active {
+    background-color: #007bff;
+}
+
+.back-button, .continue-button {
+    background-color: #007bff;
+    color: #fff;
+    font-size: 1em;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.back-button:hover, .continue-button:hover {
+    background-color: #0056b3;
+}
+
+.continue-button {
+    float: right;
+}
+
+.continue-button:hover {
+    background-color: #0056b3;
+}
+
+footer {
+    background-color: #fff;
+    padding: 20px;
+    text-align: center;
+    margin-top: 22%;
+    border-top: 5px solid #007bff;
+}
+
+.social-icons a {
+    display: inline-block;
+    margin: 0 10px;
+    color: #007bff;
+}
+
+.social-icons i {
+    font-size: 24px;
+}
+
+p {
+    text-align: center;
+    margin: 20px;
+}
+
+.form-group {
+    position: relative;
+}
+
+input[type="password"] {
+    padding-right: 40px; 
+}
+
+.toggle-password-button, .toggle-confirm-password-button{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    right: 10px; 
+    top: 50%; 
+    transform: translateY(-50%);
+}
+
+
+.toggle-password-button i, .toggle-confirm-password-button i{
+    color: #333; 
+}
+
+.toggle-password-button i.fa-eye-slash, .toggle-confirm-password-button i.fa-eye-slash{
+    display: none; 
+}
+
+
+.toggle-password-button i.fa-eye, .toggle-confirm-password-button i.fa-eye{
+    display: block; 
+}
+
+
+.error{
+    text-align: center;
+    color: red;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 200;
+    padding: 0;
+    margin-left: 10px;
+}
+
+a{
+    text-decoration: none;
+}
