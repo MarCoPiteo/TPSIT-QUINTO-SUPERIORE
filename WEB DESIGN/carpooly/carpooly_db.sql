@@ -55,9 +55,6 @@ CREATE TABLE `autisti` (
 -- Dump dei dati per la tabella `autisti`
 --
 
-INSERT INTO `autisti` (`id`, `email`, `password`, `name`, `surname`, `birthdate`, `gender`, `N_Patente`, `E_Patente`, `S_Patente`) VALUES
-(1, 'franco@autista.it', 'autista01', 'Franco', 'Calabrese', '1950-01-15', 'male', 'ABCD123456', '2024-01-15', '2034-01-14'),
-
 -- --------------------------------------------------------
 
 --
@@ -146,9 +143,6 @@ CREATE TABLE `users` (
 --
 -- Dump dei dati per la tabella `users`
 --
-
-INSERT INTO `users` (`id`, `email`, `password`, `name`, `surname`, `birthdate`, `gender`, `created_at`) VALUES
-(1, 'marco@panetti.it', 'marcoferri', 'Marco', 'Ferri', '2005-06-06', 'male', '2024-04-30 22:01:01');
 
 -- --------------------------------------------------------
 

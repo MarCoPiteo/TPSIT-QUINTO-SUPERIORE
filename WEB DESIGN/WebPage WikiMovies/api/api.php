@@ -112,11 +112,7 @@
                 "payload" => $genres
             ]);
         } else if ($_SERVER['PATH_INFO'] == '/user') {
-            $a = [1, 0, 0, 0];
-            $b = [1, 0, 0, 1];
-            $dist = cosine_similarity($a, $b);
-
-            /*$viewed_movies = get_viewedMovies($_GET['id']);
+            $viewed_movies = get_viewedMovies($_GET['id']);
 
             http_response_code(200);
             header("Content-Type: application/json");
@@ -124,7 +120,7 @@
                 "status" => 200,
                 "message" => "OK",
                 "payload" => $viewed_movies
-            ]);*/
+            ]);
         }
     } else {
         http_response_code(405);

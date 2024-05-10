@@ -1,8 +1,12 @@
+HOME
+
 - capire se si vuole mettere un hamburger in alto e cosa ci deve stare dentro
 - capire se e dove si vuole mettere il selettore delle categorie
 - capire se nella pagine di ricerca si vuole mettere un selettore per categorie. e come lo si vuole fare (stavo pensando a far comparire
     prima una schermata che permette di scegliere tra categorie o per nome)
-- serve usare flex grow 1 sui film piccoli?
 - come faccio a lasciare la linea attivata quando scelgo una categoria?
-- sul telefono, i mini movies vengono visualizzati in due colonne, per via della grandezza credo dell'immagine. mettendola in %, da problemi 
-    di visualizzazione e non va più a capo. Come risolvo?
+- il nav sembra come non boxato, deduco per la grandezza del testo.
+- come tolgo lo spazio tra l'icona e la scritta nel nav?
+
+
+SEARCH

@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
 
-    <link rel="stylesheet" href="home-style.css">
+    <link rel="stylesheet" href="static/css/home-style.css">
+    <link rel="stylesheet" href="static/css/general.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -82,25 +83,25 @@
         </div>
     </div>
 
-    <div class="bottom-menu">
-        <div>
-            <a href="#">
-                <span class="material-symbols-outlined pos-absolute">home</span>
-            </a>
-        </div>
-        <div>
-            <a href="#">
-                <span class="material-symbols-outlined pos-absolute">search</span>
-            </a>
-        </div>
-        <div>
-            <a href="#">
-                <span class="material-symbols-outlined pos-absolute">bookmark</span>
-            </a>
-        </div>
+    <div class="bottom-menu flex">
+        <a href="home.html" class="flex link button-menu-link">
+            <span class="material-symbols-outlined active">home</span>
+            <h3 class="button-menu-title active">Home</h3>
+        </a>
+        <a href="search.html" class="flex link button-menu-link">
+            <span class="material-symbols-outlined">search</span>
+            <h3 class="button-menu-title">Search</h3>
+        </a>
+        <a href="#" class="flex link button-menu-link">
+            <span class="material-symbols-outlined">bookmark</span>
+            <h3 class="button-menu-title">Watchlist</h3>
+        </a>
+        <a href="#" class="flex link button-menu-link">
+            <span class="material-symbols-outlined">person</span>
+            <h3 class="button-menu-title">Account</h3>
+        </a>
     </div>
 
-
-    <script src="home.js"></script>
+    <script src="static/js/home.js"></script>
 </body>
 </html>

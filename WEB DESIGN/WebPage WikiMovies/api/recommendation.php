@@ -1,6 +1,11 @@
 <?php
 //function get_movie($user_a)
 
+/*
+$a = [1, 0, 5, 0];
+$b = [5, 0, 1, 1];
+$dist = cosine_similarity($a, $b);
+*/
 function cosine_similarity($a, $b) {
     $dist = 0;
     $somma_a = 0;

@@ -13,14 +13,21 @@ for (let i = 0; i < categoryChooses.length; i++) {
 }
 
 
+//CARICAMENTO DEI FILM ALLO START
+var defaultCategoryLink = document.querySelector('.categories-link.category-select');
+var defaultCategory = defaultCategoryLink.getAttribute('data-category');
+showCategory(defaultCategory);
+
+
 function showCategory(category) {
     var categorySelectYet = document.querySelector('.categories-link.category-select')
-    categorySelectYet.classList.remove('category-select')
+    categorySelectYet.classList.remove('category-select', 'active')
 
     var categorySelectedElement = document.querySelector(`[data-category="${category}"]`)
-    categorySelectedElement.classList.add('category-select')
+    categorySelectedElement.classList.add('category-select', 'active')
 
-    // Simuliamo i dati dei film associati alla categoria selezionata
+
+
     var moviesData = [
         { title: "Film 1", category: "upcoming", imageUrl: "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTKNvN1d8BSJPWenCvCOx2oOTDYqBSzjLkuDplC6Iw89KZONqnk" },
         { title: "Film 4", category: "upcoming", imageUrl: "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTKNvN1d8BSJPWenCvCOx2oOTDYqBSzjLkuDplC6Iw89KZONqnk" },
@@ -34,10 +41,10 @@ function showCategory(category) {
         { title: "Film 4", category: "popular", imageUrl: "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTKNvN1d8BSJPWenCvCOx2oOTDYqBSzjLkuDplC6Iw89KZONqnk" },
     ];
 
-    // Filtriamo i film associati alla categoria selezionata
     var categoryMovies = moviesData.filter(function(movie) {
         return movie.category === category;
     });
+
 
     var categoryMoviesContainer = document.querySelector('.category-movies');
     categoryMoviesContainer.innerHTML = '';
@@ -53,13 +60,12 @@ function showCategory(category) {
     });
 }
 
+
 function createMovieElement(movie) {    
-    // Creiamo un elemento anchor per collegare il film
     var movieLink = document.createElement('a');
     movieLink.href = '#';
     movieLink.classList.add('movie-mini', 'pos-relative');
 
-    // Creiamo un elemento img per l'immagine del film
     var movieImage = document.createElement('img');
     movieImage.src = movie.imageUrl;
     movieImage.alt = movie.title;
