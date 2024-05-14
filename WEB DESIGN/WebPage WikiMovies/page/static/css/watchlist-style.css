@@ -27,10 +27,16 @@
     font-weight: 600;
 }
 
+.back-icon {
+    /*font-size: 16px;*/
+}
+
+
 
 /*WATCH LIST CONTAINER*/
 .watch-film-container {
     flex-direction: column;
+    /*overflow-y: scroll;*/
 }
 
 .film-card {
@@ -42,6 +48,10 @@
 
     flex-direction: row;
 }
+.film-card:last-child {
+    margin-bottom: 80px;
+}
+
 .film-card-image {
     width: 30.94%;
     height: 120px;
@@ -76,8 +86,7 @@
 }
 .information-icon {
     color: #eee;
-    width: 16px;
-    height: 16px;
+    font-size: 16px !important;
 }
 .rating-style {
     color: gold;

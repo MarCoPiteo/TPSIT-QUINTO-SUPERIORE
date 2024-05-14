@@ -168,6 +168,9 @@
 
     border-radius: 16px;
 }
-.movie-mini:last-child {
+/*.movie-mini:last-child {
     margin-right: 0;
+}*/
+.movie-mini:last-child {
+    margin-bottom: 70px;
 }
