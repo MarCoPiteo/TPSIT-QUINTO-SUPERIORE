@@ -52,7 +52,7 @@ function handleInput(event) {
     clearFilmCards();
 
     var inputValue = event.target.value.toLowerCase();
-    console.log("Input Value: " + inputValue);
+    //console.log("Input Value: " + inputValue);
 
     var filteredFilms = films.filter(film => film.title.toLowerCase().includes(inputValue));
     generateFilmCards(filteredFilms);
@@ -84,6 +84,7 @@ function clearFilmCards() {
 
 function createFilmCard(film) {
     var filmCard = document.createElement('a');
+    filmCard.href = '#';
     filmCard.classList.add('film-card', 'flex', 'link');
 
     var filmImage = document.createElement('img');

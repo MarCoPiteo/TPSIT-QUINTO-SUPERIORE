@@ -17,6 +17,10 @@ WATCHLIST
 - come metto le informazioni in basso al div staccate dal titolo?
 - come faccio per l'immagine che si modificano in base alla grandezza dello schermo? l'altezza si bugga
 - il titolo watchlist sta troppo verso destra
-- capire per l'overflow come fare. se usare fix ma si bugga tutto o l'overflow
 - si potrebbe mettere un immagine al lato della card del film per far vedere anche il regista
 - le info corrispondono alla fine del titolo, e quando il titolo è piu lungo di un altro, si sminchia tutto
+
+
+GENERALE 
+- capire per l'overflow come fare. se usare fix ma si bugga tutto o l'overflow
+- come faccio a fare la pagina dei dettagli del film? non posso mica fare una pagina per ogni film

@@ -60,6 +60,7 @@ films.forEach(function(film) {
 
 function createFilmCard(film) {
     var filmCard = document.createElement('a');
+    filmCard.href = '#';
     filmCard.classList.add('film-card', 'flex', 'link');
     /*<a class="film-card flex link">*/
 

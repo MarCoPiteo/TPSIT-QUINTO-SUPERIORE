@@ -45,7 +45,7 @@
     flex-direction: row;
 }
 .film-card:last-child {
-    margin-bottom: 80px;
+    margin-bottom: 70px;
 }
 
 .film-card-image {
