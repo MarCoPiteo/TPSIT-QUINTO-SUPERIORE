@@ -40,11 +40,8 @@ body {
 }
 
 
-.material-symbols-outlined {
+::placeholder {
     color: #67686D;
-    right: 12px;
-    top: 44px;
-    transform: translateY(-45%);
 }
 
 
@@ -76,6 +73,6 @@ body {
 }
 
 .button-menu-title.active,
-.material-symbols-outlined.active {
+.material-icons.active {
     color: #0296E5;
 }

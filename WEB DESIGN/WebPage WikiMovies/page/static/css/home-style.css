@@ -2,9 +2,10 @@
 .main-container {
     max-width: 90%; 
     min-height: 100vh;    
-    z-index: 1;
+    /*z-index: 1;*/
 }
-::placeholder {
+
+.material-icons {
     color: #67686D;
 }
 
@@ -36,6 +37,12 @@
     margin-top: 24px;
     padding-top: 5px;
     padding-left: 12px;
+}
+.search-icon {
+    color: #67686D;
+    right: 12px;
+    top: 44px;
+    transform: translateY(-45%);
 }
 
 

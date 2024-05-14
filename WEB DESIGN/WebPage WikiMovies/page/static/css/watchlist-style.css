@@ -1,0 +1,84 @@
+.main-container {
+    max-width: 81.86%; /*307px*/
+    min-height: 100vh;
+}
+
+.material-icons {
+    color: #67686D;
+}
+
+
+.header {
+    /*position: fixed;
+    top: 0;
+    left: 0;
+
+    height: 35px;
+    max-width: 100%;*/
+    margin-top: 25px;
+
+    flex-direction: row;
+    
+    color: #ECECEC;
+}
+.header-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+
+/*WATCH LIST CONTAINER*/
+.watch-film-container {
+    flex-direction: column;
+}
+
+.film-card {
+    margin-top: 20px;
+    min-height: 32%;
+
+    border-radius: 16px;
+    color: #fff;
+
+    flex-direction: row;
+}
+.film-card-image {
+    width: 30.94%;
+    height: 120px;
+
+    border-radius: 16px;
+}
+
+
+.film-card-information {
+    margin-left: 10px;
+
+    font-size: 12px;
+    flex-direction: column;
+}
+
+.film-card-title {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.film-card-details {    
+    flex-direction: column;
+}
+.film-card-rating {
+    margin-top: 5px;
+    justify-content: space-between;
+} 
+
+.information-text {
+    font-size: 12px;
+    font-weight: 400;
+}
+.information-icon {
+    color: #eee;
+    width: 16px;
+    height: 16px;
+}
+.rating-style {
+    color: gold;
+}

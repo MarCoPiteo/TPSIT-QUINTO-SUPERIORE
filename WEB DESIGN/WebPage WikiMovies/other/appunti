@@ -7,6 +7,12 @@ HOME
 - come faccio a lasciare la linea attivata quando scelgo una categoria?
 - il nav sembra come non boxato, deduco per la grandezza del testo.
 - come tolgo lo spazio tra l'icona e la scritta nel nav?
-
+- servono i z-index?
 
 SEARCH
+
+
+WATCHLIST
+- come metto le informazioni in basso al div staccate dal titolo?
+- come faccio per l'immagine che si modificano in base alla grandezza dello schermo? l'altezza si bugga
+- il titolo watchlist sta troppo verso destra
