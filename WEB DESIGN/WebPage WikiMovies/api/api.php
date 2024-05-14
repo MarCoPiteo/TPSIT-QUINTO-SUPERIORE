@@ -112,7 +112,7 @@
                 "payload" => $genres
             ]);
         } else if ($_SERVER['PATH_INFO'] == '/user') {
-            $viewed_movies = get_viewedMovies($_GET['id']);
+            $viewed_movies = get_user_ratings($_GET['id']);
 
             http_response_code(200);
             header("Content-Type: application/json");

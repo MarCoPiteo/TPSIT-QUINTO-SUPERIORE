@@ -275,6 +275,28 @@ function get_viewedMovies($user_id) {
     return $viewed_movies;
 }
 
+
+function get_user_ratings($user_id) {
+    $ratings = array();
+
+    $mysqli = new mysqli("mysql","root","root","db_film");
+    if ($mysqli -> connect_errno) {
+        echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
+        exit();
+    }
+
+    $ratingsQuery = 'SELECT user_id, movie_id FROM movie_user WHERE user_id = '.$user_id;
+    $ratingsResult = $mysqli -> query($ratingsQuery);
+
+    while ($ratingsRow = $ratingsResult -> fetch_assoc()) {
+        $ratings[] = $ratingsRow;
+    }
+
+    $mysqli -> close();
+
+    return $ratings;
+
+}
 // fetch_assoc() restituisce un array associativo | chiave - valore
 // fecth_array() restituisce un array di array | 0 - n, gli indici dipendono dalla query
 ?>

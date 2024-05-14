@@ -27,10 +27,6 @@
     font-weight: 600;
 }
 
-.back-icon {
-    /*font-size: 16px;*/
-}
-
 
 
 /*WATCH LIST CONTAINER*/
@@ -74,6 +70,7 @@
 
 .film-card-details {    
     flex-direction: column;
+    align-items: flex-start;
 }
 .film-card-rating {
     margin-top: 5px;

@@ -1,0 +1,96 @@
+.main-container {
+    max-width: 90%; 
+    min-height: 100vh;    
+    /*z-index: 1;*/
+}
+
+.material-icons {
+    color: #67686D;
+}
+
+
+
+/*BARRA DI RICERCA*/
+.search-bar {
+    width: 100%;
+    height: 42px;
+
+    border-radius: 16px;
+    outline: none;
+    border: none;
+    
+    background-color: #3A3F47;
+    color: #fff;
+    font-size: 14px;
+
+    margin-top: 24px;
+    padding-top: 5px;
+    padding-left: 12px;
+}
+.search-icon {
+    color: #67686D;
+    right: 12px;
+    top: 44px;
+    transform: translateY(-45%);
+}
+
+
+/*WATCH LIST CONTAINER*/
+.watch-film-container {
+    flex-direction: column;
+    /*overflow-y: scroll;*/
+}
+
+.film-card {
+    margin-top: 20px;
+    min-height: 32%;
+
+    border-radius: 16px;
+    color: #fff;
+
+    flex-direction: row;
+}
+.film-card:last-child {
+    margin-bottom: 80px;
+}
+
+.film-card-image {
+    width: 30.94%;
+    height: 120px;
+
+    border-radius: 16px;
+}
+
+
+.film-card-information {
+    margin-left: 10px;
+
+    font-size: 12px;
+    flex-direction: column;
+}
+
+.film-card-title {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.film-card-details {    
+    flex-direction: column;
+    align-items: flex-start;
+}
+.film-card-rating {
+    margin-top: 5px;
+    justify-content: space-between;
+} 
+
+.information-text {
+    font-size: 12px;
+    font-weight: 400;
+}
+.information-icon {
+    color: #eee;
+    font-size: 16px !important;
+}
+.rating-style {
+    color: gold;
+}
