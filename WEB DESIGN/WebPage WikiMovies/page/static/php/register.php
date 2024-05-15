@@ -34,6 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "<script> window.location.href = 'sign.html'; </script>";
             exit;
         } else {
+            echo "<script>alert('Registrazione errore');</script>";
             echo "Errore nella registrazione dell'utente: " . $mysqli->connect_error;
         }
     }
