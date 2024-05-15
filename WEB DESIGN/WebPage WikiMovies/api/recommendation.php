@@ -8,68 +8,126 @@ $dist = cosine_similarity($a, $b);
 */
 function cosine_similarity($a, $b) {
     $dist = 0;
-    $somma_a = 0;
-    $somma_b = 0;
-    $sommatore = 0;
+
+    $modulo_a = 0;
+    $modulo_b = 0;
+    $denom = 0;
     
     for ($i = 0; $i < $a[$i]; $i++) {
-        $pow_ind = pow($a[$i], 2);
-        $pow_ind = pow($b[$i], 2);
-
-        $somma_b = $somma_b + $pow_ind;
-        $somma_a = $somma_a + $pow_ind;
+        $modulo_a = $modulo_a + pow($a[$i], 2);
+        $modulo_b = $modulo_b + pow($b[$i], 2);
     }
-    $modulo_a = sqrt($somma_a);
-    $modulo_b = sqrt($somma_b);
+    $modulo_a = sqrt($modulo_a);
+    $modulo_b = sqrt($modulo_b);
 
     $denom = $modulo_a * $modulo_b;
 
+    if ($denom == 0) {
+        return null;
+    } else {
+        for ($i = 0; $i < $a[$i]; $i++) {
+            $prodotto = $a[$i] * $b[$i];
+    
+            $numeratore = $numeratore + $prodotto;
+        }
+    
+        $dist = $numeratore / $denom;
+        echo $dist;
+    
+        return $dist;
+    }
+}
 
-    for ($i = 0; $i < $a[$i]; $i++) {
-        $prodotto = $a[$i] * $b[$i];
-
-        $sommatore = $sommatore + $prodotto;
+function build_matrix() {
+    $mysqli = new mysqli("mysql","root","root","db_film");
+    if ($mysqli -> connect_errno) {
+        echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
+        exit();
     }
 
-    $dist = $sommatore / $denom;
+    /*GET MOVIES*/
+    $moviesQuery = 'SELECT * FROM movie';
 
-    echo $dist;
+    $moviesResult = $mysqli -> query($moviesQuery);
 
-    return $dist;
+    while ($moviesRow = $moviesResult -> fetch_assoc()) {
+        $movies[] = $moviesRow;
+    }
+    //return $movies;
+
+
+    /*GET USERS*/
+    $usersQuery = 'SELECT * FROM users';
+
+    $usersResult = $mysqli -> query($usersQuery);
+
+    while ($usersRow = $usersResult -> fetch_assoc()) {
+        $users[] = $usersRow;
+    }
+    //return $users;
+
+
+    /*GET WATCH FILMS*/
+    $watchFilmsQuery = 'SELECT * FROM movie_user';
+
+    $watchFilmsResult = $mysqli -> query($watchFilmsQuery);
+
+    while ($watchFilmsRow = $watchFilmsResult -> fetch_assoc()) {
+        $watchFilms[] = $watchFilmsRow;
+    }
+    //return $watchFilms;
+
+    $mysqli -> close();
+
+
+    $movieIds = array_column($movies, 'id');
+    $userIds = array_column($users, 'id');
+
+    $movieIndex = array_flip($movieIds);
+    $userIndex = array_flip($userIds);
+
+    $matrix = array_fill(0, count($userIds), array_fill(0, count($movieIds), 0));
+
+    foreach ($watchFilms as $watch) {
+        $userId = $watch['user_id'];
+        $movieId = $watch['movie_id'];
+        $rating = isset($watch['rating']) ? $watch['rating'] : 0; // Se non esiste un rating, puoi impostare un valore predefinito
+
+        $matrix[$userIndex[$userId]][$movieIndex[$movieId]] = $rating;
+    }
+
+    return $matrix;
+
+    /*$query = "SELECT * FROM users";
+    $users = $mysqli -> query($query);
+
+    $query = "SELECT * FROM movie";
+    $movies = $mysqli -> query($query);
+
+    $matrix = array();
+
+    foreach ($users as $user) {
+        $user_id = $user['id'];
+        $matrix[$user_id] = array();
+        foreach ($movies as $movie) {
+            $movie_id = $movie['id'];
+
+            $query = "SELECT rating FROM movie_user WHERE user_id = $user_id AND movie_id = $movie_id";
+            $query_result = $mysqli -> query($query);
+
+            if ($query_result->num_rows > 0) {
+                $rating = $query_result->fetch_assoc()['rating'];
+            } else {
+                $rating = null;
+            }
+
+            $matrix[$user_id][$movie_id] = $rating;
+        }
+    }
+
+    return $matrix;*/
 }
 
-/*function build_matrix() {
-    $userId = 1; // ID dell'utente di cui vogliamo costruire la matrice di rating
-
-// Effettua una richiesta GET per ottenere i film valutati dall'utente
-$userData = file_get_contents("http://localhost:9000/api/api.php/user?id=1");
-
-// Decodifica i dati JSON
-$userRatings = json_decode($userData, true);
-
-// Inizializza la matrice di rating degli utenti
-$matrix = [];
-
-// Costruisci la matrice di rating degli utenti
-foreach ($userRatings['payload'] as $movie) {
-    $movieId = $movie['movie_id'];
-
-    // Aggiungi il film alla matrice
-    $matrix[$movieId] = 1; // Imposta il valore a 1 poiché il film è stato visto dall'utente
-}
-
-// Restituisci la matrice di rating degli utenti
-return $matrix;
-}
-
-// Chiamata alla funzione per costruire la matrice di rating degli utenti
-$userMatrix = build_matrix();
-
-// Visualizza la matrice di rating degli utenti
-echo "<pre>";
-print_r($userMatrix);
-echo "</pre>";
-*/
 
 
 
@@ -77,7 +135,10 @@ function most_similar_user() {
 
 }
 
-function recommend_movies() {
+function recommend_movies($user_id) {
+    $matrix = build_matrix();
+
+    return $matrix;
 }
 
 ?>

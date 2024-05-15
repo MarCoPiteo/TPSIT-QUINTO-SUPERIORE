@@ -76,3 +76,14 @@ body {
 .material-icons.active {
     color: #0296E5;
 }
+
+
+/*LOGIN OR NOT FUNCTION*/
+.login-icon.disactive {
+    display: none !important; 
+}
+.profile-img {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+}
