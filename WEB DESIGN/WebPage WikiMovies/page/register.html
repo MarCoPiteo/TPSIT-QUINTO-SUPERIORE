@@ -4,111 +4,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
-    <link rel="stylesheet" href="./static/css/registrazione.css">
-    <script src="https://kit.fontawesome.com/af6ecfa2ff.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="./static/css/register.css">
+    <link rel="stylesheet" href="static/css/general.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
 </head>
 <body> 
-    <main>
-        <section class="content">
-            <div class="container">
-                <form action="static/php/register.php" method="post">
-                    <div class="slide" id="slide1">
-                        <h1 class="form-heading">Qual è la tua e-mail?</h1>
-                        <div class="form-group">
-                            <input type="email" placeholder="E-mail" id="email" name="email" autocorrect="on" required>
-                        </div>
-                        <p class="error"></p>
-                        <div class="pagination">
-                            <span class="active"></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                        <button type="submit" style="float: none;" class="continue-button">Continua</button>
+    <div class="main-container centerAlignment">
+        <div class="header flex">
+            <a href="#" class="back-button">
+                <i class="material-icons back-icon">arrow_back_ios</i>
+            </a>
+            <h1 class="header-title centerAlignment">REGISTER</h1>
+        </div>
+
+        <form action="static/php/register.php" method="post" class="register-form flex">
+            <div class="dataField-container flex">
+                <div class="data-field">
+                    <input type="email" placeholder="E-mail" id="email" name="email" class="data-field-input" autocorrect="on" required>
+                    <p class="data-field-error"></p>
+                </div>
+                <div class="anagrafical-data flex">
+                    <div class="data-field">
+                        <input type="text" placeholder="Name" name="name" class="data-field-input" autocorrect="off" required>
+                        <p class="data-field-error"></p>
                     </div>
-                    <div class="slide" id="slide2">
-                        <h1 class="form-heading">Inserisci il tuo nome e cognome</h1>
-                        <div class="form-group">
-                            <input type="text" placeholder="Nome" name="name" autocorrect="off" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" placeholder="Cognome" name="surname" autocorrect="off" required>
-                        </div>
-                        <div class="pagination">
-                            <span></span>
-                            <span class="active"></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                        <button type="submit" style="float: left;" class="back-button">Indietro</button>
-                        <button type="submit" class="continue-button">Continua</button>
+                    <div class="data-field">
+                        <input type="text" placeholder="Surname" name="surname" class="data-field-input" autocorrect="off" required>
+                        <p class="data-field-error"></p>
                     </div>
-                    <!--<div class="slide" id="slide3">
-                        <h1 class="birthdate-heading">Qual è la tua data di nascita?</h1>
-                        <div class="form-group">
-                            <input type="date" class="birthdate-input" name="birthdate" autocorrect="off" required>
-                        </div>
-                        <p class="error"></p>
-                        <div class="pagination">
-                            <span></span>
-                            <span></span>
-                            <span class="active"></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                        <button type="submit" style="float: left;" class="back-button">Indietro</button>
-                        <button type="submit" class="continue-button">Continua</button>
-                    </div>-->
-                    <!--<div class="slide" id="slide4">
-                        <h1 class="gender-heading">Seleziona il tuo sesso</h1>
-                        <div class="form-group">
-                            <select name="gender" id="gender" required>
-                                <option value="" disabled selected>Seleziona il tuo sesso</option>
-                                <option value="male">Maschio</option>
-                                <option value="female">Femmina</option>
-                                <option value="other">Altro</option>
-                            </select>
-                        </div>
-                        <p class="error"></p>
-                        <div class="pagination">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span class="active"></span>
-                            <span></span>
-                        </div>
-                        <button type="submit" style="float: left;" class="back-button">Indietro</button>
-                        <button type="submit" class="continue-button">Continua</button>
-                    </div>-->
-                    <div class="slide" id="slide5">
-                        <h1 class="password-heading">Scegli una password sicura</h1>
-                        <div class="form-group">
-                            <input type="password" id="password-input" placeholder="Password" name="password" autocorrect="off" required>
-                            <button class="toggle-password-button" type="button"><i class="toggle-password fas fa-eye"></i></button>
-                        </div>
-                        <div class="form-group">
-                            <input type="password" id="confirm-password-input" placeholder="Conferma Password" name="confirm-password" autocorrect="off" required>
-                            <button class="toggle-confirm-password-button" type="button"><i class="toggle-confirm-password fas fa-eye"></i></button>
-                        </div>
-                        <p class="error"></p>
-                        <div class="pagination">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span class="active"></span>
-                        </div>
-                        <button style="float: left;" type="button" class="back-button">Indietro</button>
-                        <button id="register-button" type="submit" class="continue-button">
-                            Registrati
-                        </button>
+                </div>
+                <div class="data-field">
+                    <input type="text" placeholder="Username" name="username" class="data-field-input" autocorrect="off" required>
+                    <p class="data-field-error"></p>
+                </div>
+
+                <div class="password-container flex">
+                    <div class="data-field pos-relative">
+                        <input type="password" id="password-input" placeholder="Password" name="password" class="data-field-input" autocorrect="off" required>
+                        <a href="#" class="password-visibility-button link pos-absolute" id="pw-visib">
+                            <i class="material-icons" id="pw-visib-icon">visibility</i>
+                        </a>
                     </div>
-                </form>
+                    <div class="data-field pos-relative">
+                        <input type="password" id="confirm-password-input" placeholder="Confirm Password" name="confirm-password" class="data-field-input" autocorrect="off" required>
+                        <a href="#" class="password-visibility-button link pos-absolute" id="confirm-pw-visib">
+                            <i class="material-icons" id="confirm-password-visib-icon">visibility</i>
+                        </a>
+                    </div>
+                    <p class="data-field-error"></p>
+                </div>  
             </div>
-        </section>
-    </main>
+            <button type="submit" class="confirm-button">Confirm Registration</button>
+        </form>
+    </div>
+
     <script src="./static/js/register.js"></script>
+    <script src="./static/js/general.js"></script>
 </body>
 </html>

@@ -1,0 +1,98 @@
+.main-container {
+    max-width: 85%; 
+    min-height: 100vh;    
+    /*z-index: 1;*/
+}
+
+.material-icons {
+    color: #67686D;
+}
+
+
+/*FORM REGISTRAZIONE*/
+.register-form {
+    flex-direction: column;
+    align-items: center;
+}
+
+.dataField-container {
+    flex-direction: column;
+    align-items: center;
+
+    margin-top: 20px;
+}
+
+.data-field {
+   margin-bottom: 8px;
+}
+.data-field-input {
+    border-radius: 16px;
+    border: none;
+    outline: none;
+
+    background-color: #3A3F47;
+    color: #fff;
+    font-size: 14px;
+
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 12px;
+
+    width: 110px;
+    height: 30px;
+    animation-name: inputSelectedOut;
+    animation-duration: 1s;
+}
+.data-field-input:hover {
+    width: 180px;
+
+    animation-name: inputSelectedIn;
+    animation-duration: 1s;
+}
+.data-field-input.selected {
+    width: 180px;
+
+    animation-name: inputSelectedIn;
+    animation-duration: 1s;
+}
+@keyframes inputSelectedIn {
+    from {width: 110px;}
+    to {width: 180px;}
+}
+@keyframes inputSelectedOut {
+    from {width: 180px;}
+    to {width: 110px;}
+}
+
+.anagrafical-data {
+    margin-top: 15px;
+    margin-bottom: 15px;
+
+    flex-direction: column;
+    align-items: center;
+}
+.password-container {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    
+    flex-direction: column;
+    align-items: center;
+}
+
+.password-visibility-button {
+    right: 5px;
+    top: calc(50% - 12px);
+}
+
+.confirm-button {
+    border-radius: 16px;
+    border: none;
+    outline: none;
+
+    background-color: #0296E5;
+    color: #fff;
+    font-size: 14px;
+
+    padding: 10px;
+
+}

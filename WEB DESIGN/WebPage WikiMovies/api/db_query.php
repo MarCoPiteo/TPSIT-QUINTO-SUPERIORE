@@ -26,9 +26,7 @@ function get_movies($user_input, $filter) {
     }
 
     $moviesResult = $mysqli -> query($moviesQuery);
-
     $movies = query_join($moviesResult);
-
 
     $mysqli -> close();
 
@@ -257,7 +255,7 @@ function query_join($moviesResult) {
 }
 
 
-function get_viewedMovies($user_id) {
+function get_viewedMovies($user_id) { //SERVE ANCORA?
     $viewed_movies = array();
 
     $mysqli = new mysqli("mysql","root","root","db_film");
@@ -278,8 +276,8 @@ function get_viewedMovies($user_id) {
 }
 
 
-function get_user_ratings($user_id) {
-    $ratings = array();
+function get_users() {
+    $users = array();
 
     $mysqli = new mysqli("mysql","root","root","db_film");
     if ($mysqli -> connect_errno) {
@@ -287,17 +285,43 @@ function get_user_ratings($user_id) {
         exit();
     }
 
-    $ratingsQuery = 'SELECT user_id, movie_id FROM movie_user WHERE user_id = '.$user_id;
-    $ratingsResult = $mysqli -> query($ratingsQuery);
 
-    while ($ratingsRow = $ratingsResult -> fetch_assoc()) {
-        $ratings[] = $ratingsRow;
+    $usersQuery = 'SELECT * FROM users';
+    $usersResult = $mysqli -> query($usersQuery);
+
+    while ($usersRow = $usersResult -> fetch_assoc()) {
+        $users[] = $usersRow;
     }
+    //return $users;
+
 
     $mysqli -> close();
 
-    return $ratings;
+    return $users;
+}
 
+
+function get_user_ratings($user_id) {
+    $watchFilms = array();
+
+    $mysqli = new mysqli("mysql","root","root","db_film");
+    if ($mysqli -> connect_errno) {
+        echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
+        exit();
+    }
+
+    $watchFilmsQuery = 'SELECT * FROM movie_user WHERE user_id = ' . $user_id;
+    $watchFilmsResult = $mysqli -> query($watchFilmsQuery);
+
+    while ($watchFilmsRow = $watchFilmsResult -> fetch_assoc()) {
+        $watchFilms[] = $watchFilmsRow;
+    }
+    //return $watchFilms;
+
+
+    $mysqli -> close();
+
+    return $watchFilms;
 }
 // fetch_assoc() restituisce un array associativo | chiave - valore
 // fecth_array() restituisce un array di array | 0 - n, gli indici dipendono dalla query

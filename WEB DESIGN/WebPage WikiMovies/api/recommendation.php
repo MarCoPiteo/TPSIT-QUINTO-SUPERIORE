@@ -7,6 +7,8 @@ function recommend_movies($user_id) {
     //return $movieMatrix;
 
     $most_similar_user = get_most_similar_user($user_id, $movieMatrix);
+
+
     return $most_similar_user;
 }
 
@@ -21,7 +23,6 @@ function build_matrix() {
 
     /*GET MOVIES*/
     $moviesQuery = 'SELECT * FROM movie';
-
     $moviesResult = $mysqli -> query($moviesQuery);
 
     while ($moviesRow = $moviesResult -> fetch_assoc()) {
@@ -29,36 +30,17 @@ function build_matrix() {
     }
     $filmNumber = count($movies);
     //return $movies;
-
-
-    /*GET USERS*/
-    $usersQuery = 'SELECT * FROM users';
-
-    $usersResult = $mysqli -> query($usersQuery);
-
-    while ($usersRow = $usersResult -> fetch_assoc()) {
-        $users[] = $usersRow;
-    }
-    //return $users;
-
+    
+    /*$movies = get_movies(null, null); SE CHIAMO QUELLA FUNZIONE HO LA JOIN DEI FILM CON TUTTI GLI ALTRI ATTRIBUTI*/
+    
+    $users = get_users();
 
     $userFilms = array();
 
     foreach ($users as $user) {
         $user_id = $user['id'];
 
-        $watchFilms = array();
-        
-
-        /*GET WATCH FILMS*/
-        $watchFilmsQuery = 'SELECT * FROM movie_user WHERE user_id = ' . $user_id;
-
-        $watchFilmsResult = $mysqli -> query($watchFilmsQuery);
-
-        while ($watchFilmsRow = $watchFilmsResult -> fetch_assoc()) {
-            $watchFilms[] = $watchFilmsRow;
-        }
-        //return $watchFilms;
+        $watchFilms = get_user_ratings($user_id);
 
         $userFilms[$user_id] = array_fill(1, $filmNumber, 0);
 
@@ -72,7 +54,7 @@ function build_matrix() {
 
 
 function get_most_similar_user($user_id, $movieMatrix) {
-    $users_distances = array(); //[ [2, 0.4], [3, 0.25], [4, -0.67] ]
+    $users_distances = array(); 
     $user_array = $movieMatrix[$user_id];
    
     foreach ($movieMatrix as $index => $user) {
@@ -99,7 +81,9 @@ function get_most_similar_user($user_id, $movieMatrix) {
         }
     }
 
-    return $max_distance;
+    $most_similar_user = $most_similar_user_id;
+
+    return $most_similar_user;
 }
 
 

@@ -1,11 +1,3 @@
-/*BACK BUTTON*/
-var backButton = document.querySelector('.back-button');
-
-backButton.addEventListener('click', function() {
-    window.history.back();
-});
-
-
 /*WATCH LIST FILLING*/
 var watchlistContainer = document.querySelector('.watch-film-container');
 

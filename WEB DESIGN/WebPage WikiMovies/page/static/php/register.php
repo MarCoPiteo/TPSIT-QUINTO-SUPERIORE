@@ -6,14 +6,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $name = $_POST['name'];
     $surname = $_POST['surname'];
-    $password = $_POST['password'];
     $email =  $_POST['email'];
-    $emailCheckQuery = "SELECT * FROM users WHERE email='$email'";
+    $username = $_POST['username'];
+    $password = $_POST['password'];    
 
-    //echo $password;
-
-    $encryptedPassword = password_hash($password, PASSWORD_DEFAULT);
-    //cho "Encrypted Password". $encryptedPassword;
 
     $mysqli = new mysqli("mysql","root","root","db_film");
     if ($mysqli -> connect_errno) {
@@ -21,18 +17,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 
+
+    $emailCheckQuery = "SELECT * FROM users WHERE email='$email'";
     $result = $mysqli->query($emailCheckQuery);
 
     if ($result->num_rows > 0) {
         echo "<script>alert('L\'email inserita è già associata ad un account');</script>";
         exit;
     } else {
+        $encryptedPassword = password_hash($password, PASSWORD_DEFAULT);
+        //echo $password;
+        //echo "Encrypted Password". $encryptedPassword;
 
-        $sql = "INSERT INTO users (name, last_name, email, password, registration_date) VALUES ('$name', '$surname', '$email', '$encryptedPassword', NOW())";
+        $insertUserData = "INSERT INTO users (name, last_name, email, password, username, registration_date) VALUES ('$name', '$surname', '$email', '$encryptedPassword', '$username', NOW())";
 
-        if ($mysqli->query($sql) === TRUE) {
+        if ($mysqli->query($insertUserData) === TRUE) {
             echo "<script>alert('Registrazione avvenuta con successo');</script>";
-            echo "<script> window.location.href = 'sign.html'; </script>";
+            echo "<script> window.location.href = '../../login.html'; </script>";
             exit;
         } else {
             echo "<script>alert('Registrazione errore');</script>";

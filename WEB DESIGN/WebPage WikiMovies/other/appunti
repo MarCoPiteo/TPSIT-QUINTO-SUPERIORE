@@ -1,16 +1,14 @@
 HOME
-- capire se si vuole mettere un hamburger in alto e cosa ci deve stare dentro
 - capire se e dove si vuole mettere il selettore delle categorie
 - capire se nella pagine di ricerca si vuole mettere un selettore per categorie. e come lo si vuole fare (stavo pensando a far comparire
     prima una schermata che permette di scegliere tra categorie o per nome)
 - come faccio a lasciare la linea attivata quando scelgo una categoria?
 - il nav sembra come non boxato, deduco per la grandezza del testo.
-- come tolgo lo spazio tra l'icona e la scritta nel nav?
-- servono i z-index?
+- quando cambio il margintop alla search bar, si sfancula l'iconcina della lente. perche e come risolvo?
 
 
 SEARCH
-
+- come faccio a mettere i dettagli del film partendo dal basso
 
 
 WATCHLIST
@@ -21,9 +19,14 @@ WATCHLIST
 - le info corrispondono alla fine del titolo, e quando il titolo è piu lungo di un altro, si sminchia tutto
 
 
+REGISTER 
+- perche il campo del form non si allarga aumentando la width?
+
+
 GENERALE 
 - capire per l'overflow come fare. se usare fix ma si bugga tutto o l'overflow
 - come faccio a fare la pagina dei dettagli del film? non posso mica fare una pagina per ogni film
+- capire per le immagini delle film card
 
 
 TO DO:

@@ -34,14 +34,14 @@
     color: #fff;
     font-size: 14px;
 
-    margin-top: 24px;
+    margin-top: 14px;
     padding-top: 5px;
     padding-left: 12px;
 }
 .search-icon {
     color: #67686D;
     right: 12px;
-    top: 44px;
+    top: /*calc(50% + 12px)*/ 61%;
     transform: translateY(-45%);
 }
 
