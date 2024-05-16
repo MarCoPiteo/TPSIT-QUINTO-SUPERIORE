@@ -1,7 +1,7 @@
 checkAuthStatus();
 
 function checkAuthStatus() {
-    fetch('/api/status-login.php')
+    fetch('/static/php/status-login.php')
         .then(response => response.json())
         .then(data => {
             //console.log("Auth status:", data);

@@ -1,4 +1,6 @@
 <?php
+header('Access-Control-Allow-Origin: *');
+
 session_start();
 
 header('Content-Type: application/json');

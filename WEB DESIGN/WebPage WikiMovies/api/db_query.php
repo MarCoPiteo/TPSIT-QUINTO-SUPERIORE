@@ -1,4 +1,6 @@
 <?php
+header('Access-Control-Allow-Origin: *');
+
 function get_movies($user_input, $filter) {  
     $movies = array();
 
