@@ -1,44 +1,15 @@
 <?php
 header('Access-Control-Allow-Origin: *');
 
-//function get_movie($user_a)
 
-/*
-$a = [1, 0, 5, 0];
-$b = [5, 0, 1, 1];
-$dist = cosine_similarity($a, $b);
-*/
-function cosine_similarity($a, $b) {
-    $dist = 0;
+function recommend_movies($user_id) {
+    $movieMatrix = build_matrix();
+    //return $movieMatrix;
 
-    $modulo_a = 0;
-    $modulo_b = 0;
-    $denom = 0;
-    
-    for ($i = 0; $i < $a[$i]; $i++) {
-        $modulo_a = $modulo_a + pow($a[$i], 2);
-        $modulo_b = $modulo_b + pow($b[$i], 2);
-    }
-    $modulo_a = sqrt($modulo_a);
-    $modulo_b = sqrt($modulo_b);
-
-    $denom = $modulo_a * $modulo_b;
-
-    if ($denom == 0) {
-        return null;
-    } else {
-        for ($i = 0; $i < $a[$i]; $i++) {
-            $prodotto = $a[$i] * $b[$i];
-    
-            $numeratore = $numeratore + $prodotto;
-        }
-    
-        $dist = $numeratore / $denom;
-        echo $dist;
-    
-        return $dist;
-    }
+    $most_similar_user = get_most_similar_user($user_id, $movieMatrix);
+    return $most_similar_user;
 }
+
 
 function build_matrix() {
     $mysqli = new mysqli("mysql","root","root","db_film");
@@ -46,6 +17,7 @@ function build_matrix() {
         echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
         exit();
     }
+
 
     /*GET MOVIES*/
     $moviesQuery = 'SELECT * FROM movie';
@@ -55,6 +27,7 @@ function build_matrix() {
     while ($moviesRow = $moviesResult -> fetch_assoc()) {
         $movies[] = $moviesRow;
     }
+    $filmNumber = count($movies);
     //return $movies;
 
 
@@ -69,78 +42,95 @@ function build_matrix() {
     //return $users;
 
 
-    /*GET WATCH FILMS*/
-    $watchFilmsQuery = 'SELECT * FROM movie_user';
-
-    $watchFilmsResult = $mysqli -> query($watchFilmsQuery);
-
-    while ($watchFilmsRow = $watchFilmsResult -> fetch_assoc()) {
-        $watchFilms[] = $watchFilmsRow;
-    }
-    //return $watchFilms;
-
-    $mysqli -> close();
-
-
-    $movieIds = array_column($movies, 'id');
-    $userIds = array_column($users, 'id');
-
-    $movieIndex = array_flip($movieIds);
-    $userIndex = array_flip($userIds);
-
-    $matrix = array_fill(0, count($userIds), array_fill(0, count($movieIds), 0));
-
-    foreach ($watchFilms as $watch) {
-        $userId = $watch['user_id'];
-        $movieId = $watch['movie_id'];
-        $rating = isset($watch['rating']) ? $watch['rating'] : 0; // Se non esiste un rating, puoi impostare un valore predefinito
-
-        $matrix[$userIndex[$userId]][$movieIndex[$movieId]] = $rating;
-    }
-
-    return $matrix;
-
-    /*$query = "SELECT * FROM users";
-    $users = $mysqli -> query($query);
-
-    $query = "SELECT * FROM movie";
-    $movies = $mysqli -> query($query);
-
-    $matrix = array();
+    $userFilms = array();
 
     foreach ($users as $user) {
         $user_id = $user['id'];
-        $matrix[$user_id] = array();
-        foreach ($movies as $movie) {
-            $movie_id = $movie['id'];
 
-            $query = "SELECT rating FROM movie_user WHERE user_id = $user_id AND movie_id = $movie_id";
-            $query_result = $mysqli -> query($query);
+        $watchFilms = array();
+        
 
-            if ($query_result->num_rows > 0) {
-                $rating = $query_result->fetch_assoc()['rating'];
-            } else {
-                $rating = null;
-            }
+        /*GET WATCH FILMS*/
+        $watchFilmsQuery = 'SELECT * FROM movie_user WHERE user_id = ' . $user_id;
 
-            $matrix[$user_id][$movie_id] = $rating;
+        $watchFilmsResult = $mysqli -> query($watchFilmsQuery);
+
+        while ($watchFilmsRow = $watchFilmsResult -> fetch_assoc()) {
+            $watchFilms[] = $watchFilmsRow;
+        }
+        //return $watchFilms;
+
+        $userFilms[$user_id] = array_fill(1, $filmNumber, 0);
+
+        foreach ($watchFilms as $row) {
+            $userFilms[$user_id][$row['movie_id']] = $row['rating'];
         }
     }
 
-    return $matrix;*/
+    return $userFilms;
 }
 
 
+function get_most_similar_user($user_id, $movieMatrix) {
+    $users_distances = array(); //[ [2, 0.4], [3, 0.25], [4, -0.67] ]
+    $user_array = $movieMatrix[$user_id];
+   
+    foreach ($movieMatrix as $index => $user) {
+        if ($index != $user_id) {
+            $distance = cosine_similarity($user_array, $user);
+            
+            $users_distances[] = array($index, $distance);
+        }
+    }
+    
+    $max_distance = -1;
+    $most_similar_user_id = -1;
 
+    foreach ($users_distances as $key => $row) {
+        $user_distance = $row[1];
+        //echo $row[1];
+        /*echo '<pre>';
+        echo print_r($users_distance);
+        echo '</pre>';*/
 
-function most_similar_user() {
+        if ($user_distance > $max_distance) {
+            $max_distance = $user_distance;
+            $most_similar_user_id = $row[0];
+        }
+    }
 
+    return $max_distance;
 }
 
-function recommend_movies($user_id) {
-    $matrix = build_matrix();
 
-    return $matrix;
+function cosine_similarity($a, $b) {
+    $dist = 0;
+
+    $modulo_a = 0;
+    $modulo_b = 0;
+    $denom = 0;
+    $numeratore = 0;
+    
+    foreach ($a as $key => $value) {
+        $modulo_a = $modulo_a + pow($value, 2);
+        $modulo_b = $modulo_b + pow($b[$key], 2);
+    }
+    $modulo_a = sqrt($modulo_a);
+    $modulo_b = sqrt($modulo_b);
+
+    $denom = $modulo_a * $modulo_b;
+
+    if ($denom == 0) {
+        return null;
+    } else {
+        foreach ($a as $key => $value) {
+            $numeratore = $numeratore + ($value * $b[$key]);
+        }
+    
+        $dist = $numeratore / $denom;
+        //echo $dist;
+    
+        return $dist;
+    }
 }
-
 ?>
