@@ -128,3 +128,11 @@ function createFilmDetail(iconName, text, additionalClasses = []) {
 
     return detailDiv;
 }
+
+
+/*BACK BUTTON*/
+var backButton = document.querySelector('.back-button');
+
+backButton.addEventListener('click', function() {
+    window.history.back();
+});

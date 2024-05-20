@@ -63,6 +63,7 @@
 
 .film-card-information {
     margin-left: 10px;
+    width: 68%;
 
     font-size: 12px;
     flex-direction: column;
@@ -71,6 +72,10 @@
 .film-card-title {
     font-size: 16px;
     font-weight: 400;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .film-card-details {    
@@ -92,4 +97,22 @@
 }
 .rating-style {
     color: gold;
+}
+
+
+.failed-search {
+    flex-direction: column;
+    align-items: center;
+
+    color: #fff;
+    margin-top: 20px;
+}
+.failed-search-image {
+    width: 75px;
+
+    margin-top: calc(50% - 85px);
+}
+.failed-search-text {
+    font-size: 14px;
+    font-weight: 400;
 }

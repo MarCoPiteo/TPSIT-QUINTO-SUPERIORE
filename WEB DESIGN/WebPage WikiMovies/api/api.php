@@ -113,15 +113,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             "message" => "OK",
             "payload" => $genres
         ]);
-    } else if ($_SERVER['PATH_INFO'] == '/user') {
-        $viewed_movies = get_user_ratings($_GET['id']);
+    } else if ($_SERVER['PATH_INFO'] == '/users') {
+        $users = get_users();
 
         http_response_code(200);
         header("Content-Type: application/json");
         echo json_encode([
             "status" => 200,
             "message" => "OK",
-            "payload" => $viewed_movies
+            "payload" => $users
         ]);
     } else if ($_SERVER['PATH_INFO'] == '/recommend') {
         $recommendations = recommend_movies($_GET['id']);
@@ -145,4 +145,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 }
 
 exit;
+
+
+/*$viewed_movies = get_users();
+
+        http_response_code(200);
+        header("Content-Type: application/json");
+        echo json_encode([
+            "status" => 200,
+            "message" => "OK",
+            "payload" => $viewed_movies
+        ]);*/
 ?>

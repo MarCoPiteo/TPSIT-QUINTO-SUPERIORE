@@ -1,3 +1,9 @@
+<?php
+    session_start();
+
+    //var_dump($_SESSION);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,22 +41,25 @@
     </div>
 
     <div class="bottom-menu flex">
-        <a href="home.html" class="flex link button-menu-link">
+        <a href="home.php" class="flex link button-menu-link">
             <i class="material-icons">home</i>
             <h3 class="button-menu-title">Home</h3>
         </a>
-        <a href="search.html" class="flex link button-menu-link">
+        <a href="search.php" class="flex link button-menu-link">
             <i class="material-icons active">search</i>
             <h3 class="button-menu-title active">Search</h3>
         </a>
-        <a href="watchlist.html" class="flex link button-menu-link">
+        <a href="watchlist.php" class="flex link button-menu-link">
             <i class="material-icons">bookmark</i>
             <h3 class="button-menu-title">Watchlist</h3>
         </a>
         <a href="login.html" class="flex link button-menu-link">
-            <i class="material-icons login-icon">person</i>
-            <img src="#" alt="" class="profile-img">
-            <h3 class="button-menu-title">Account</h3>
+            <?php if (isset($_SESSION['profile_photo'])): ?>
+                <img src="static/images/fotoProfilo/<?php echo $_SESSION['profile_photo']; ?>" alt="Profile Image" class="profile-img">
+            <?php else: ?>
+                <i class="material-icons login-icon">person</i>
+                <h3 class="button-menu-title">Account</h3>
+            <?php endif; ?>
         </a>
     </div>
 

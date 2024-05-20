@@ -1,11 +1,41 @@
 .main-container {
-    max-width: 85%; 
-    min-height: 100vh;    
-    /*z-index: 1;*/
+    max-width: 85%; /*319px*/
+    min-height: 100vh;
 }
+
+body {
+    background-image: url(../images/Movies-background.png);
+}
+
 
 .material-icons {
     color: #67686D;
+    /*color: #fff;*/
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: #ffffff;
+    box-shadow: inset 0 0 20px 20px #3A3F47;
+}
+
+
+/*PAGE LOADER*/
+.page-loader {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+
 }
 
 
@@ -22,9 +52,14 @@
     margin-top: 20px;
 }
 
+
 .data-field {
-   margin-bottom: 8px;
+   margin-bottom: 5px;
+
+   flex-direction: column;
+   align-items: center;
 }
+
 .data-field-input {
     border-radius: 16px;
     border: none;
@@ -45,16 +80,34 @@
 }
 .data-field-input:hover {
     width: 180px;
+    border: 1px solid #0296E5;
 
     animation-name: inputSelectedIn;
     animation-duration: 1s;
 }
 .data-field-input.selected {
     width: 180px;
+    border: 1px solid #0296E5;
 
     animation-name: inputSelectedIn;
     animation-duration: 1s;
 }
+
+.data-field-error {
+    display: none;
+    text-align: center;
+
+    color: #FF0000;
+
+    font-size: 12px;
+    margin-top: 1px;
+}
+.data-field-error.active {
+    display: block;
+    margin-bottom: 5px;
+}
+
+
 @keyframes inputSelectedIn {
     from {width: 110px;}
     to {width: 180px;}
@@ -79,9 +132,17 @@
     align-items: center;
 }
 
+.password-field, 
+.confirm-password-field {
+    flex-direction: column;
+    align-items: center;
+}
+
 .password-visibility-button {
     right: 5px;
     top: calc(50% - 12px);
+
+    display: none;
 }
 
 .confirm-button {
@@ -94,5 +155,33 @@
     font-size: 14px;
 
     padding: 10px;
+}
 
+
+/*PROFILE PICKER*/
+.profile-foto-picker {
+    margin-bottom: 15px;
+
+    overflow-x: scroll; 
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+}
+
+.profilePic-image {
+    border-radius: 50%;
+
+    width: 100%;
+}
+.profilePic-image.selected {
+    border: 2px solid #0296E5;
+}
+
+.profilePic-link {
+    margin-right: 7px;
+    flex: 0 0 auto;
+
+    width: 20.44%;
+}
+.profilePic-link:last-child {
+    margin-right: 0;
 }

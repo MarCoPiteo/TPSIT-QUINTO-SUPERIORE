@@ -30,9 +30,7 @@ function build_matrix() {
     }
     $filmNumber = count($movies);
     //return $movies;
-    
-    /*$movies = get_movies(null, null); SE CHIAMO QUELLA FUNZIONE HO LA JOIN DEI FILM CON TUTTI GLI ALTRI ATTRIBUTI*/
-    
+        
     $users = get_users();
 
     $userFilms = array();
@@ -83,7 +81,10 @@ function get_most_similar_user($user_id, $movieMatrix) {
 
     $most_similar_user = $most_similar_user_id;
 
-    return $most_similar_user;
+    return [
+        "user_id" => $most_similar_user,
+        "similarity" => $max_distance
+    ];
 }
 
 

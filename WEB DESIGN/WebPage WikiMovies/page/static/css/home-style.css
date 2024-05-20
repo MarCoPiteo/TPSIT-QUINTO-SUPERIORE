@@ -84,10 +84,13 @@
     -0.5px -0.5px 0 #0296E5;
     /*-webkit-text-stroke: 0.5px #0296E5;*/
 
-    /*z-index: 9999;*/
 
     top: 133px;
     left: -15px;
+}
+
+.movie-big:last-child {
+    margin-right: 0;
 }
 
 

@@ -1,52 +1,59 @@
+/*BACK BUTTON*/
+var backButton = document.querySelector('.back-button');
+
+backButton.addEventListener('click', function() {
+    window.history.back();
+});
+
+
+
+/*SEARCHING*/
 var inputElement = document.querySelector(".search-bar");
 var filmList = document.querySelector(".watch-film-container");
 
-var films = [
-    {
-        title: "Fight Club",
-        imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfj-Xxr1DlcuFjU4Nj0ZHm2rmEn0e7BBU0xQZzQedaWODnFw7Q",
-        rating: "9.5",
-        genre: "Action",
-        year: "1999",
-        duration: "139min"
-    },
-    {
-        title: "Inception",
-        imageUrl: "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTKNvN1d8BSJPWenCvCOx2oOTDYqBSzjLkuDplC6Iw89KZONqnk",
-        rating: "8.8",
-        genre: "Sci-Fi",
-        year: "2010",
-        duration: "148min"
-    },
-    {
-        title: "The Matrix",
-        imageUrl: "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTKNvN1d8BSJPWenCvCOx2oOTDYqBSzjLkuDplC6Iw89KZONqnk",
-        rating: "8.7",
-        genre: "Action",
-        year: "1999",
-        duration: "136min"
-    },
-    {
-        title: "Pulp Fiction",
-        imageUrl: "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTKNvN1d8BSJPWenCvCOx2oOTDYqBSzjLkuDplC6Iw89KZONqnk",
-        rating: "8.9",
-        genre: "Crime",
-        year: "1994",
-        duration: "154min"
-    },
-    {
-        title: "The Dark Knight",
-        imageUrl: "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTKNvN1d8BSJPWenCvCOx2oOTDYqBSzjLkuDplC6Iw89KZONqnk",
-        rating: "9.0",
-        genre: "Action",
-        year: "2008",
-        duration: "152min"
+var moviesList = [];
+
+
+fetchMovies();
+
+
+async function fetchMovies() {
+    var movies = await doFetch("/api/api.php/movies");
+    //console.log(movies);
+    moviesList = movies;
+    if (movies) {
+        generateFilmCards(movies); 
     }
-];
-
-generateFilmCards(films);
+}
 
 
+async function doFetch(path) {
+    try {
+        const response = await fetch(path);
+        return await thenCallback(response);
+    } catch (error) {
+        catchCallback(error);
+    }
+}
+
+async function thenCallback(response) {
+    if (response.status === 200) {
+        const data = await response.json();
+        return data.payload;
+    } else {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+}
+
+function catchCallback(error) {
+    console.log(error)
+    //error = ""
+    //document.querySelector(".sentenceBox").innerHTML = error
+}
+
+
+
+//RICERCA ISTANTANEA
 inputElement.addEventListener("input", handleInput);
 function handleInput(event) {
     clearFilmCards();
@@ -54,25 +61,16 @@ function handleInput(event) {
     var inputValue = event.target.value.toLowerCase();
     //console.log("Input Value: " + inputValue);
 
-    var filteredFilms = films.filter(film => film.title.toLowerCase().includes(inputValue));
-    generateFilmCards(filteredFilms);
+    var filteredFilms = moviesList.filter(film => film.title.toLowerCase().includes(inputValue));
+
+    if (filteredFilms.length === 0) {
+        failedSearch();
+    } else {
+        generateFilmCards(filteredFilms);
+    }
+    //searching();
 }
 
-
-
-function generateFilmCards(films) {
-    // Seleziona l'elemento padre in cui verranno inserite le card dei film
-    var filmListElement = document.querySelector(".watch-film-container");
-
-    // Per ogni film ricevuto dalla risposta del server, crea una card e aggiungila al DOM
-    films.forEach(film => {
-        // Crea la card del film utilizzando la funzione createFilmCard
-        var filmCard = createFilmCard(film);
-
-        // Aggiungi la card del film all'elemento padre
-        filmListElement.appendChild(filmCard);
-    });
-}
 
 
 function clearFilmCards() {
@@ -82,13 +80,46 @@ function clearFilmCards() {
 }
 
 
+function failedSearch() {
+    var noFilm = document.createElement('div');
+    noFilm.classList.add('failed-search', 'flex');
+
+    filmList.appendChild(noFilm);
+
+
+    var noFilmImage = document.createElement('img');
+    noFilmImage.src = "/page/static/images/failedSearch.png";
+    noFilmImage.alt = "No film found";
+    noFilmImage.classList.add('failed-search-image');
+
+    noFilm.appendChild(noFilmImage);
+
+
+    var noFilmText = document.createElement('h3');
+    noFilmText.textContent = "we are sorry, we can not find the movie :(";
+    noFilmText.classList.add('failed-search-text');
+
+    noFilm.appendChild(noFilmText);
+}
+
+function generateFilmCards(films) {
+    var filmListElement = document.querySelector(".watch-film-container");
+
+    films.forEach(film => {
+        var filmCard = createFilmCard(film);
+
+        filmListElement.appendChild(filmCard);
+    });
+}
+
+
 function createFilmCard(film) {
     var filmCard = document.createElement('a');
     filmCard.href = '#';
     filmCard.classList.add('film-card', 'flex', 'link');
 
     var filmImage = document.createElement('img');
-    filmImage.src = film.imageUrl;
+    filmImage.src = film.poster;
     filmImage.alt = film.title;
     filmImage.classList.add('film-card-image');
 
@@ -103,9 +134,9 @@ function createFilmCard(film) {
     filmDetails.classList.add('film-card-details', 'flex');
 
     filmDetails.appendChild(createFilmDetail('star', film.rating, ['rating-style']));
-    filmDetails.appendChild(createFilmDetail('confirmation_number', film.genre));
-    filmDetails.appendChild(createFilmDetail('calendar_today', film.year));
-    filmDetails.appendChild(createFilmDetail('schedule', film.duration));
+    filmDetails.appendChild(createFilmDetail('confirmation_number', film.genres));
+    filmDetails.appendChild(createFilmDetail('calendar_today', film.released_year));
+    filmDetails.appendChild(createFilmDetail('schedule', `${film.duration}min`));
 
     filmInfo.appendChild(filmTitle);
     filmInfo.appendChild(filmDetails);
@@ -127,14 +158,51 @@ function createFilmDetail(iconName, text, additionalClasses = []) {
     }
 
     var iconText = document.createElement('h4');
-    iconText.textContent = text;
+    if (typeof text === 'object') {
+        const detailDiv = text.map(detail => detail.name)    
+        const detail = detailDiv.join(', ');
+        
+        iconText.textContent = detail;
+    } else {
+        iconText.textContent = text;
+    }
     iconText.classList.add('information-text');
+
     if (additionalClasses.length > 0) {
         iconText.classList.add(...additionalClasses);
     }
+    
 
     detailDiv.appendChild(icon);
     detailDiv.appendChild(iconText);
 
     return detailDiv;
 }
+
+
+
+
+
+
+
+
+/*function finalCallback(data) {
+    //console.log(data.payload)
+    //console.log(data.value)
+
+    return (data.payload);
+    //generateFilmCards(data.payload);
+}
+
+//FILM LIST AT LOADED
+/*searching();
+
+
+function searching() {
+    if (inputElement.value === "") {
+        path = "/api/api.php/movies";
+    } else {
+        path = "/api/api.php/movies?title=" + inputElement.value;
+    }
+    doFetch(path);
+}*/

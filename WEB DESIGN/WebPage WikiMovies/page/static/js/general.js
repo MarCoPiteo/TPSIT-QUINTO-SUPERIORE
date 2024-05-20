@@ -1,8 +1,8 @@
 /*CHECK LOGIN STATUS*/
-checkAuthStatus();
+/*checkAuthStatus();
 
 function checkAuthStatus() {
-    fetch('/static/php/status-login.php')
+    fetch('static/php/status-login.php')
         .then(response => response.json())
         .then(data => {
             //console.log("Auth status:", data);
@@ -22,47 +22,4 @@ function checkAuthStatus() {
             console.error('Error fetching authentication status:', error);
         });
 }
-
-
-
-/*BACK BUTTON*/
-var backButton = document.querySelector('.back-button');
-
-backButton.addEventListener('click', function() {
-    window.history.back();
-});
-
-
-
-/*PASSWORD VISIBILITY*/
-var pwVisibButton = document.getElementById('pw-visib');
-pwVisibButton.addEventListener('click', function(event) {
-    event.preventDefault();
-
-    var passwordBox = document.getElementById('password-input');
-    var icon = document.querySelector('#pw-visib-icon');
-
-    togglePwVisibility(icon, passwordBox);
-});
-
-var confPwVisibButton = document.getElementById('confirm-pw-visib');
-confPwVisibButton.addEventListener('click', function(event) {
-    event.preventDefault();
-
-    var passwordBox = document.getElementById('confirm-password-input');
-    var icon = document.querySelector('#confirm-password-visib-icon');
-
-    togglePwVisibility(icon, passwordBox);
-});
-
-
-
-function togglePwVisibility(icon, passwordInput) {
-    if (passwordInput.type === "password") {
-        passwordInput.type = "text";
-        icon.textContent = "visibility_off";
-    } else {
-        passwordInput.type = "password";
-        icon.textContent = "visibility";
-    }
-}
+*/

@@ -9,6 +9,7 @@ HOME
 
 SEARCH
 - come faccio a mettere i dettagli del film partendo dal basso
+- rating da aggiungere dinamicamente
 
 
 WATCHLIST
@@ -19,8 +20,11 @@ WATCHLIST
 - le info corrispondono alla fine del titolo, e quando il titolo è piu lungo di un altro, si sminchia tutto
 
 
-REGISTER 
-- perche il campo del form non si allarga aumentando la width?
+LOGIN
+- come allineare i campi centralmente
+- stile da aggiustare
+- forgot password
+- remember me
 
 
 GENERALE 
@@ -35,8 +39,9 @@ Recommendation
 Sessioni
 
 PAGINE
-Login
-Registrazione
+Login - gestire errori o risultati messi nel p sotto il button
+Registrazione - rivedere sicurezza registrazione se c'è da fare altro, assegnazione foto profilo, la background image (se la teniamo) non si    carica subito
+Menu account quando si è loggati
 
 Watchlist vuota
 Ricerca non andata a buon fine
