@@ -1,7 +1,138 @@
+/*BACK BUTTON*/
+var backButton = document.querySelector('.back-button');
+
+backButton.addEventListener('click', function() {
+    window.history.back();
+});
+
+
+
+//WATCHLIST CREATE
+async function loadWatchList(userID) {
+    try {
+        const response = await fetch('/api/api.php/watchlist?id=' + userID);
+        const data = await response.json();
+
+        watchMovies = data.payload;
+        return watchMovies;
+    }
+    catch (error) {
+        console.log(error);
+    }
+}
+
+
+
 /*WATCH LIST FILLING*/
 var watchlistContainer = document.querySelector('.watch-film-container');
+var userid = document.querySelector('script[src$="watchlist.js"]').getAttribute('data-userid');
 
-var films = [
+
+fillWatchList();
+
+
+async function fillWatchList() {
+    var watchMovies
+
+    watchMovies = await loadWatchList(userid);
+    console.log(watchMovies)
+    
+    watchMovies.forEach(function(film) {
+        watchlistContainer.appendChild(createFilmCard(film));
+    });
+}
+
+
+function createFilmCard(film) {
+    var filmCard = document.createElement('a');
+    filmCard.href = '#';
+    filmCard.classList.add('film-card', 'flex', 'link');
+
+    var filmImage = document.createElement('img');
+    filmImage.src = film.poster;
+    filmImage.alt = film.title;
+    filmImage.classList.add('film-card-image');
+
+    var filmInfo = document.createElement('div');
+    filmInfo.classList.add('film-card-information', 'flex');
+
+    var filmTitle = document.createElement('h3');
+    filmTitle.textContent = film.title;
+    filmTitle.classList.add('film-card-title');
+
+    var filmDetails = document.createElement('div');
+    filmDetails.classList.add('film-card-details', 'flex');
+
+    filmDetails.appendChild(createFilmDetail('star', film.rating, ['rating-style']));
+    filmDetails.appendChild(createFilmDetail('confirmation_number', film.genres));
+    filmDetails.appendChild(createFilmDetail('calendar_today', film.released_year));
+    filmDetails.appendChild(createFilmDetail('schedule', `${film.duration}min`));
+
+    filmInfo.appendChild(filmTitle);
+    filmInfo.appendChild(filmDetails);
+
+    filmCard.appendChild(filmImage);
+    filmCard.appendChild(filmInfo);
+
+    return filmCard;
+}
+function createFilmDetail(iconName, text, additionalClasses = []) {
+    if (additionalClasses.length > 0) {
+        var detailDiv = document.createElement('div');
+        detailDiv.classList.add('film-card-rating', 'flex');
+    } else {
+        var detailDiv = document.createElement('div');
+        detailDiv.classList.add('film-card-info', 'flex');
+    }
+
+    var icon = document.createElement('i');
+    icon.textContent = iconName;
+    icon.classList.add('material-icons', 'information-icon');
+    if (additionalClasses.length > 0) {
+        icon.classList.add(...additionalClasses);
+    }
+
+    var iconText = document.createElement('h4');
+    if (typeof text === 'object') {
+        const detailDiv = text.map(detail => detail.name)    
+        const detail = detailDiv.join(', ');
+        
+        iconText.textContent = detail;
+    } else {
+        iconText.textContent = text;
+    }
+    iconText.classList.add('information-text');
+
+    if (additionalClasses.length > 0) {
+        iconText.classList.add(...additionalClasses);
+    }
+    
+
+    detailDiv.appendChild(icon);
+    detailDiv.appendChild(iconText);
+
+    return detailDiv;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*var films = [
     {
         title: "Fight Club",
         imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfj-Xxr1DlcuFjU4Nj0ZHm2rmEn0e7BBU0xQZzQedaWODnFw7Q",
@@ -42,97 +173,4 @@ var films = [
         year: "2008",
         duration: "152min"
     }
-];
-
-
-films.forEach(function(film) {
-    watchlistContainer.appendChild(createFilmCard(film));
-});
-
-
-function createFilmCard(film) {
-    var filmCard = document.createElement('a');
-    filmCard.href = '#';
-    filmCard.classList.add('film-card', 'flex', 'link');
-    /*<a class="film-card flex link">*/
-
-
-    var filmImage = document.createElement('img');
-    filmImage.src = film.imageUrl;
-    filmImage.alt = film.title;
-    filmImage.classList.add('film-card-image');
-    /*<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfj-Xxr1DlcuFjU4Nj0ZHm2rmEn0e7BBU0xQZzQedaWODnFw7Q" alt="Fight Club" class="film-card-image">*/
-
-
-    var filmInfo = document.createElement('div');
-    filmInfo.classList.add('film-card-information', 'flex');
-    /*<div class="film-card-information flex">*/
-
-
-    var filmTitle = document.createElement('h3');
-    filmTitle.textContent = film.title;
-    filmTitle.classList.add('film-card-title');
-    /*<h3 class="film-card-title">Fight Club</h3>*/
-    
-
-    var filmDetails = document.createElement('div');
-    filmDetails.classList.add('film-card-details', 'flex');
-    /*<div class="film-card-details flex">*/
-
-
-    filmDetails.appendChild(createFilmDetail('star', film.rating, ['rating-style']));
-    filmDetails.appendChild(createFilmDetail('confirmation_number', film.genre));
-    filmDetails.appendChild(createFilmDetail('calendar_today', film.year));
-    filmDetails.appendChild(createFilmDetail('schedule', film.duration));
-
-
-    // Aggiungere gli elementi al div .film-card-information
-    filmInfo.appendChild(filmTitle);
-    filmInfo.appendChild(filmDetails);
-
-    // Aggiungere l'immagine e il div .film-card-information al link principale
-    filmCard.appendChild(filmImage);
-    filmCard.appendChild(filmInfo);
-
-    return filmCard;
-}
-
-
-function createFilmDetail(iconName, text, additionalClasses = []) {
-    var detailDiv = document.createElement('div');
-    detailDiv.classList.add('film-card-rating', 'flex');
-    /*<div class="film-card-rating flex">*/
-
-
-    var icon = document.createElement('i');
-    icon.textContent = iconName;
-    icon.classList.add('material-icons', 'information-icon');
-    if (additionalClasses.length > 0) {
-        icon.classList.add(...additionalClasses);
-    }
-    /*<i class="material-icons information-icon rating-style">star</i>*/
-
-
-    var iconText = document.createElement('h4');
-    iconText.textContent = text;
-    iconText.classList.add('information-text');
-    if (additionalClasses.length > 0) {
-        iconText.classList.add(...additionalClasses);
-    }
-    /*<h4 class="information-text rating-style">9.5</h4>*/
-
-
-    detailDiv.appendChild(icon);
-    detailDiv.appendChild(iconText);
-
-
-    return detailDiv;
-}
-
-
-/*BACK BUTTON*/
-var backButton = document.querySelector('.back-button');
-
-backButton.addEventListener('click', function() {
-    window.history.back();
-});
+];*/

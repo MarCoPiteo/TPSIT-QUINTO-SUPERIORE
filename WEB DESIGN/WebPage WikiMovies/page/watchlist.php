@@ -2,6 +2,7 @@
     session_start();
 
     //var_dump($_SESSION);
+    //$_SESSION['user_id'] = 11;
 ?>
 
 <!DOCTYPE html>
@@ -84,7 +85,7 @@
         </a>
     </div>
 
-    <script src="static/js/watchlist.js"></script>
+    <script src="static/js/watchlist.js" data-userid="<?php echo $_SESSION['user_id']; ?>"></script>
     <script src="static/js/general.js"></script>
 </body>
 </html>

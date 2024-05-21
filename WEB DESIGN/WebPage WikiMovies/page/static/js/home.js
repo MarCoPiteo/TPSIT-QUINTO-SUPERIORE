@@ -15,6 +15,20 @@ for (let i = 0; i < categoryChooses.length; i++) {
 
 
 
+//RECOMMENDATION CREATE
+async function loadRecommendedMovies(userID) {
+    try {
+        const response = await fetch('/api/api.php/recommend?id=' + userID);
+        const data = await response.json();
+        return data.payload;
+    }
+    catch (error) {
+        console.log(error);
+    }
+}
+
+
+
 //CARICAMENTO DEI FILM ALLO START
 var defaultCategoryLink = document.querySelector('.categories-link.category-selected');
 var defaultCategory = defaultCategoryLink.getAttribute('data-category');
@@ -90,19 +104,6 @@ function createMovieElement(movie) {
     return movieLink;
 }
 
-
-
-//RECOMMENDATION
-async function loadRecommendedMovies(userID) {
-    try {
-        const response = await fetch('/api/api.php/recommend?id=' + userID);
-        const data = await response.json();
-        return data.payload;
-    }
-    catch (error) {
-        console.log(error);
-    }
-}
 
 
 

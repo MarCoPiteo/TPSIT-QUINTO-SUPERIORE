@@ -54,7 +54,7 @@ function catchCallback(error) {
 
 
 
-//RICERCA ISTANTANEA
+//RICERCA RISPETTO ALL'INPUT UTENTE
 inputElement.addEventListener("input", handleInput);
 function handleInput(event) {
     clearFilmCards();
@@ -74,6 +74,7 @@ function handleInput(event) {
 
 
 
+//CARD FUNCTIONS
 function clearFilmCards() {
     var filmListElement = document.querySelector(".watch-film-container");
 
@@ -105,7 +106,7 @@ function failedSearch() {
 
 
 function generateFilmCards(films) {
-    var filmListElement = document.querySelector(".watch-film-container");
+    var filmListElement = document.querySelector(".film-container");
 
     //RANDOM GENERATION
     var max = films.length;

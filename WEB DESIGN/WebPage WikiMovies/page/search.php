@@ -37,7 +37,7 @@
                 <i class="material-icons search-icon pos-absolute">search</i>
             </a>
         </div>
-        <div class="watch-film-container flex">
+        <div class="film-container flex">
             
         </div>
     </div>

@@ -56,8 +56,8 @@
 
 
 
-/*WATCH LIST CONTAINER*/
-.watch-film-container {
+/*FILM CONTAINER*/
+.film-container {
     flex-direction: column;
     overflow-y: hidden;
 }
