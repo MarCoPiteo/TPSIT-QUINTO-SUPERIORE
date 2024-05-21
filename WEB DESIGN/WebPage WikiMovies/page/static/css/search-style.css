@@ -9,6 +9,27 @@
 
 
 
+/*HEADER*/
+.header {
+    /*position: fixed;
+    top: 0;
+    left: 0;
+
+    height: 35px;
+    max-width: 100%;*/
+    margin-top: 25px;
+
+    flex-direction: row;
+    justify-content: space-between;
+    
+    color: #ECECEC;
+}
+.request-movie {
+    width: 32px;
+}
+
+
+
 /*BARRA DI RICERCA*/
 .search-bar {
     width: 100%;
@@ -34,13 +55,14 @@
 }
 
 
+
 /*WATCH LIST CONTAINER*/
 .watch-film-container {
     flex-direction: column;
-    /*overflow-y: scroll;*/
+    overflow-y: hidden;
 }
 
-.film-card {
+/*.film-card {
     margin-top: 20px;
     min-height: 32%;
 
@@ -48,44 +70,80 @@
     color: #fff;
 
     flex-direction: row;
+}*/
+.film-card {
+    margin-top: 20px;
+    padding: 5px;
+    height: 130px;
+
+    flex-direction: row;
+
+    border-radius: 16px;
+    color: #fff;
+    background-color: #3A3F47;
+    
+    box-shadow: 0px 5px 8px -3px #000000;
 }
 .film-card:last-child {
     margin-bottom: 70px;
 }
 
-.film-card-image {
+/*.film-card-image {
     width: 28.70%;
     height: 120px;
+
+    border-radius: 16px;
+}*/
+.film-card-image {
+    width: 28.70%;
+    height: 100%;
 
     border-radius: 16px;
 }
 
 
-.film-card-information {
+/*.film-card-information {
     margin-left: 10px;
     width: 68%;
 
     font-size: 12px;
     flex-direction: column;
+}*/
+.film-card-information {
+    margin-left: 10px;
+    font-size: 12px;
+
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
 }
 
-.film-card-title {
+/*.film-card-title {
     font-size: 16px;
     font-weight: 400;
 
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}*/
+.film-card-title {
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1.1;
 }
 
 .film-card-details {    
     flex-direction: column;
     align-items: flex-start;
+    justify-content: flex-end;
 }
 .film-card-rating {
-    margin-top: 5px;
     justify-content: space-between;
 } 
+.film-card-info {
+    margin-top: 2px;
+    justify-content: space-between;
+}
 
 .information-text {
     font-size: 12px;

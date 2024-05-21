@@ -168,7 +168,7 @@
 }
 .movie-mini-image {
     width: 100%;
-
+    height: 145px;
     border-radius: 16px;
 }
 /*.movie-mini:last-child {

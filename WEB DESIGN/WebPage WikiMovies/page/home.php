@@ -1,6 +1,9 @@
 <?php
     session_start();
-    //var_dump($_SESSION)
+    //var_dump($_SESSION);
+
+    //PROVA CAMBIO ID PER CHECK RECOMMENDATION
+    //$_SESSION['user_id'] = 11;
 ?>
 
 <!DOCTYPE html>
@@ -67,10 +70,10 @@
             <nav class="categories-nav">
                 <ul class="categories-list flex">
                     <li class="categories-li listItem"> 
-                        <a href="#" class="categories-link link category-select" data-category="forYou">For you</a>
+                        <a href="#" class="categories-link link" data-category="forYou">For you</a>
                     </li>
                     <li class="categories-li listItem">
-                        <a href="#" class="categories-link link" data-category="popular">Popular</a>
+                        <a href="#" class="categories-link link category-selected" data-category="popular">Popular</a>
                     </li>
                     <li class="categories-li listItem">
                         <a href="#" class="categories-link link" data-category="upcoming">Upcoming</a>
@@ -84,7 +87,9 @@
                 </ul>
             </nav>
 
-            <div class="category-movies flex pos-relative"></div>
+            <div class="category-movies flex pos-relative">
+                
+            </div>
         </div>
     </div>
 
@@ -111,7 +116,7 @@
         </a>
     </div>
 
-    <script src="static/js/home.js"></script>
-    <script src="static/js/general.js "></script>
+    <script src="static/js/home.js" data-userid="<?php echo $_SESSION['user_id']; ?>"></script>
+    <script src="static/js/general.js"></script>
 </body>
 </html>

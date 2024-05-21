@@ -23,6 +23,7 @@ input:-webkit-autofill:active{
 }
 
 
+
 /*PAGE LOADER*/
 .page-loader {
     display: none;
@@ -35,8 +36,26 @@ input:-webkit-autofill:active{
     z-index: 1000;
     justify-content: center;
     align-items: center;
-
 }
+
+
+
+/*HEADER*/
+.header {
+    /*position: fixed;
+    top: 0;
+    left: 0;
+
+    height: 35px;
+    max-width: 100%;*/
+    margin-top: 25px;
+
+    flex-direction: row;
+    justify-content: space-between;
+    
+    color: #ECECEC;
+}
+
 
 
 /*FORM REGISTRAZIONE*/

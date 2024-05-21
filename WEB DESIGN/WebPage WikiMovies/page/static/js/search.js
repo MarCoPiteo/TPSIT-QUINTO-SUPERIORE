@@ -15,6 +15,7 @@ var moviesList = [];
 
 
 fetchMovies();
+//var start = true
 
 
 async function fetchMovies() {
@@ -79,7 +80,6 @@ function clearFilmCards() {
     filmListElement.innerHTML = '';
 }
 
-
 function failedSearch() {
     var noFilm = document.createElement('div');
     noFilm.classList.add('failed-search', 'flex');
@@ -102,14 +102,48 @@ function failedSearch() {
     noFilm.appendChild(noFilmText);
 }
 
+
+
 function generateFilmCards(films) {
     var filmListElement = document.querySelector(".watch-film-container");
 
-    films.forEach(film => {
+    //RANDOM GENERATION
+    var max = films.length;
+    var randomMovieIDs = [];
+
+    for(var y = 0; y < max; y++){
+        var temp = Math.floor(Math.random()*max);
+        if(randomMovieIDs.indexOf(temp) == -1){
+            randomMovieIDs.push(temp);
+        }
+        else
+        y--;
+    }
+    
+    if (films.length > 4) { 
+        for (let i = 0; i < 4; i++) {
+            var randomMovieID = randomMovieIDs[i];
+            //console.log(randomMovieID)
+    
+            const filmCard = films[randomMovieID];
+            var filmElement = createFilmCard(filmCard);
+    
+            filmListElement.appendChild(filmElement);
+        }
+    } else {
+        for (let i = 0; i < films.length; i++) {
+            const filmCard = films[i];
+            var filmElement = createFilmCard(filmCard);
+    
+            filmListElement.appendChild(filmElement);
+        }
+    }
+    
+    /*films.forEach(film => {
         var filmCard = createFilmCard(film);
 
         filmListElement.appendChild(filmCard);
-    });
+    });*/
 }
 
 
@@ -147,8 +181,13 @@ function createFilmCard(film) {
     return filmCard;
 }
 function createFilmDetail(iconName, text, additionalClasses = []) {
-    var detailDiv = document.createElement('div');
-    detailDiv.classList.add('film-card-rating', 'flex');
+    if (additionalClasses.length > 0) {
+        var detailDiv = document.createElement('div');
+        detailDiv.classList.add('film-card-rating', 'flex');
+    } else {
+        var detailDiv = document.createElement('div');
+        detailDiv.classList.add('film-card-info', 'flex');
+    }
 
     var icon = document.createElement('i');
     icon.textContent = iconName;

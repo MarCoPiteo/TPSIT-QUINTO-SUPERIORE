@@ -9,7 +9,8 @@ HOME
 
 SEARCH
 - come faccio a mettere i dettagli del film partendo dal basso
-- rating da aggiungere dinamicamente
+- rating da aggiungere dinamicamente (fare una sorta di calcolo della media rating)
+- mettere un numero massimo di film caricati inizialmente
 
 
 WATCHLIST
@@ -30,23 +31,48 @@ LOGIN
 GENERALE 
 - capire per l'overflow come fare. se usare fix ma si bugga tutto o l'overflow
 - come faccio a fare la pagina dei dettagli del film? non posso mica fare una pagina per ogni film
-- capire per le immagini delle film card
+- capire per la grandezza delle immagini delle film card
+
+
+RECOMMENDATION
+- gestire situazioni in cui l'utente non ha visto nessun film, o ha visto tutti i film
 
 
 TO DO:
 FUNZIONI
-Recommendation
-Sessioni
+Recommendation (FATTA ma se si riesce farla anche per i generi)
+search nella home
 
 PAGINE
 Login - gestire errori o risultati messi nel p sotto il button
 Registrazione - rivedere sicurezza registrazione se c'è da fare altro, assegnazione foto profilo, la background image (se la teniamo) non si    carica subito
-Menu account quando si è loggati
+Menu account quando si è loggati - cambio password, informazioni account, logout
 
-Watchlist vuota
+Watchlist vuota - dinamicita watchlist
 Ricerca non andata a buon fine
 
 Rating movie
 Dettagli movie
 Review (Rating di altri utenti) 
 Cast
+
+SE SI RIESCE, FORM DI INSERIMENTO FILM E ENTRY DATABASE (perche farli da sql è una tortura)
+
+
+
+
+
+
+
+
+
+
+
+e|--------------------------|-------------------|-----------------------------------------|
+B|-13-13-13-16-14-13-13b5-5-|-5-5-5b13-13-12-10-|-10b13-13-13-13b12-12b10-10b8-8b7-7b5-5--|
+G|--------------------------|-------------------|-----------------------------------------|
+D|--------------------------|-------------------|-----------------------------------------|
+A|--------------------------|-------------------|-----------------------------------------|
+E|--------------------------|-------------------|-----------------------------------------|
+
+https://youtu.be/Up4bJVN2uqk?si=U6LN7b2zW0OvoQlL

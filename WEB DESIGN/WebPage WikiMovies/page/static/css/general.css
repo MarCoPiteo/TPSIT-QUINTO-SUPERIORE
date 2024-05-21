@@ -59,7 +59,6 @@ body {
     left: 0; 
 
     flex-direction: row;
-    /*flex-grow: 1; SERVE?*/
     justify-content: space-evenly;
     align-items: center;
 }
@@ -79,6 +78,7 @@ body {
 }
 
 
+
 /*LOGIN OR NOT FUNCTION*/
 .profile-img {
     width: 42px;
@@ -87,20 +87,8 @@ body {
 }
 
 
+
 /*HEADER SEARCH AND WATCHLIST*/
-.header {
-    /*position: fixed;
-    top: 0;
-    left: 0;
-
-    height: 35px;
-    max-width: 100%;*/
-    margin-top: 25px;
-
-    flex-direction: row;
-    
-    color: #ECECEC;
-}
 .header-title {
     font-family: 'Montserrat', sans-serif;
     font-size: 16px;

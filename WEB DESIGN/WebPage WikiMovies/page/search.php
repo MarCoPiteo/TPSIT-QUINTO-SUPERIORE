@@ -26,7 +26,9 @@
             <a href="#" class="back-button">
                 <i class="material-icons back-icon">arrow_back_ios</i>
             </a>
-            <h2 class="header-title centerAlignment">Search</h2>
+            <h2 class="header-title">Search</h2>
+            <a href="#" class="back-button">
+                <img src="static/images/movieAdding.jpg" alt="" class="request-movie">
         </div>
          
         <div class="search-bar-div pos-relative">

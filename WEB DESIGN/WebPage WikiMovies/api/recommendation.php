@@ -3,13 +3,41 @@ header('Access-Control-Allow-Origin: *');
 
 
 function recommend_movies($user_id) {
+    $mysqli = new mysqli("mysql","root","root","db_film");
+    if ($mysqli -> connect_errno) {
+        echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
+        exit();
+    }
+
     $movieMatrix = build_matrix();
     //return $movieMatrix;
 
+
     $most_similar_user = get_most_similar_user($user_id, $movieMatrix);
+    //return $most_similar_user;
+
+    $user_movies = $movieMatrix[$user_id];
+    $similar_user_movies = $movieMatrix[$most_similar_user['user_id']];
 
 
-    return $most_similar_user;
+    $recommended_movies = array();
+
+    foreach ($similar_user_movies as $movie_id => $rating) {
+        if ($rating > 0 && $user_movies[$movie_id] == 0) {
+            $movieQuery = "SELECT * FROM movie WHERE id = $movie_id";
+
+            $movieResult = $mysqli->query($movieQuery);
+            $movie = query_join($movieResult);
+
+            $recommended_movies[] = $movie;
+        }
+    }
+
+    /*usort($recommended_movies, function($a, $b) {
+        return $b['rating'] - $a['rating'];
+    });*/
+
+    return $recommended_movies;
 }
 
 
