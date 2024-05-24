@@ -1,27 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+  <title>Registration</title>
 
-    <link rel="stylesheet" href="./static/css/register.css">
-    <link rel="stylesheet" href="static/css/general.css">
+  <link rel="stylesheet" href="static/css/register.css">
+  <link rel="stylesheet" href="static/css/general.css">
+  
+  <link rel="stylesheet" href="static/libraries/swiper/package/css/swiper.min.css">
+  <link rel="stylesheet" href="static/libraries/swiper/css/styles.css">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
-<body> 
+<body>
     <div class="main-container centerAlignment pos-relative">
         <img src="static/images/popcornLoader.gif" alt="Loader" class="page-loader">
+    
         <div class="header flex">
             <a href="login.html" class="back-login-button">
                 <i class="material-icons back-login-button">login</i>
             </a>
-            <h1 class="header-title centerAlignment">REGISTRATION</h1>
+            <h1 class="header-title">REGISTRATION</h1>
             <a href="home.php" class="home-button">
                 <i class="material-icons back-icon">home</i>
             </a>
@@ -71,36 +75,59 @@
                 </div>
             </div>
 
-            <div class="profile-foto-picker flex">
-                <?php
-                $directory = 'static/images/fotoProfilo/';
-                
-                $handler = opendir($directory);
-                
-                if ($handler) {
-                    while (($file = readdir($handler)) !== false) {
-                        if ($file === '.' || $file === '..') {
-                            continue;
+            <div class="profile-foto-picker">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <?php
+                        $directory = 'static/images/fotoProfilo/';
+                        
+                        $handler = opendir($directory);
+                        
+                        if ($handler) {
+                            while (($file = readdir($handler)) !== false) {
+                                if ($file === '.' || $file === '..') {
+                                    continue;
+                                }
+                        
+                                echo '<div class="swiper-slide">
+                                        <a href="#" class="profileImage-link">
+                                            <img src="static/images/fotoProfilo/'. $file .'" id="'. $file .'" alt="Movie Title" class="profilePicker-image">
+                                        </a>
+                                    </div>';
+                            }
+                        
+                            closedir($handler);
                         }
-                
-                        echo '<a href="#" class="profilePic-link">
-                                <img src="static/images/fotoProfilo/' . $file . '" id="'.$file.'" alt="Profile Picture" class="profilePic-image">
-                              </a>';
-                    }
-                
-                    closedir($handler);
-                }
-                ?>
+                        ?>
+                    </div>
+                    <div class="swiper-button-next navigation-arrow"></div>
+                    <div class="swiper-button-prev navigation-arrow"></div>
+                </div>
                 <input type="hidden" name="profile_picture" id="profile_picture">
             </div>
-
             <button id="submit" class="confirm-button">Confirm Registration</button>
             <p class="data-field-error" id="registration-error"></p>
-        </form>
+        </form>       
     </div>
 
-    <script src="./static/js/register.js"></script>
-    <script src="./static/js/general.js"></script>
+    <script src="static/js/register.js"></script>
+    <script src="static/js/general.js"></script>
 
+    <script src="static/libraries/swiper/package/js/swiper.min.js"></script>
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+        slidesPerView: 4,
+        spaceBetween: 15,
+        slidesPerGroup: 2,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        });
+    </script>
 </body>
 </html>

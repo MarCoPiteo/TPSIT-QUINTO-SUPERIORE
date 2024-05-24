@@ -27,15 +27,19 @@ async function loadWatchList(userID) {
 var watchlistContainer = document.querySelector('.watch-film-container');
 var userid = document.querySelector('script[src$="watchlist.js"]').getAttribute('data-userid');
 
+if (userid === "null") {
+    failedSearch("not logged");
+} else {
+    fillWatchList();
+}
 
-fillWatchList();
 
 
 async function fillWatchList() {
     var watchMovies
 
     watchMovies = await loadWatchList(userid);
-    console.log(watchMovies)
+    //console.log(watchMovies)
     
     watchMovies.forEach(function(film) {
         watchlistContainer.appendChild(createFilmCard(film));
@@ -43,6 +47,43 @@ async function fillWatchList() {
 }
 
 
+function failedSearch(status) {
+    var noFilm = document.createElement('div');
+    noFilm.classList.add('failed-search', 'flex');
+
+    watchlistContainer.appendChild(noFilm);
+
+
+    var noFilmImage = document.createElement('img');
+    noFilmImage.src = "/page/static/images/failedSearch.png";
+    noFilmImage.alt = "No film found";
+    noFilmImage.classList.add('failed-search-image');
+
+    noFilm.appendChild(noFilmImage);
+
+
+    var noFilmText = document.createElement('h3');
+    if (status === "not logged") {
+        noFilmText.innerHTML = "You are not logged in!<br>Please log in to see your watchlist.";
+    } else if (status === "watchlist empty") {
+        noFilmText.textContent = "Watchlist is empty. Start adding films!";
+    }
+    noFilmText.classList.add('failed-search-text');
+
+    noFilm.appendChild(noFilmText);
+
+
+    var loginButton = document.createElement('a');
+    loginButton.href = 'login.html';
+    loginButton.textContent = "Login";
+    loginButton.classList.add('login-button', 'link');
+
+    noFilm.appendChild(loginButton);
+}
+
+
+
+//FILM CARD CREATE 
 function createFilmCard(film) {
     var filmCard = document.createElement('a');
     filmCard.href = '#';

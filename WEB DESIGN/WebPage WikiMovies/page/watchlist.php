@@ -75,17 +75,19 @@
             <i class="material-icons active">bookmark</i>
             <h3 class="button-menu-title active">Watchlist</h3>
         </a>
-        <a href="login.html" class="flex link button-menu-link">
-            <?php if (isset($_SESSION['profile_photo'])): ?>
+        <?php if (isset($_SESSION['profile_photo'])): ?>
+            <a href="account.php" class="flex link button-menu-link">
                 <img src="static/images/fotoProfilo/<?php echo $_SESSION['profile_photo']; ?>" alt="Profile Image" class="profile-img">
-            <?php else: ?>
+            </a>
+        <?php else: ?>
+            <a href="login.html" class="flex link button-menu-link">
                 <i class="material-icons login-icon">person</i>
                 <h3 class="button-menu-title">Account</h3>
-            <?php endif; ?>
-        </a>
+            </a>
+        <?php endif; ?>
     </div>
 
-    <script src="static/js/watchlist.js" data-userid="<?php echo $_SESSION['user_id']; ?>"></script>
+    <script src="static/js/watchlist.js" data-userid="<?php if (isset($_SESSION['user_id'])): echo $_SESSION['user_id']; else: echo "null"; endif;?>"></script>
     <script src="static/js/general.js"></script>
 </body>
 </html>

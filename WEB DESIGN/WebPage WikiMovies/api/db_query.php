@@ -255,7 +255,7 @@ function query_join($moviesResult) {
 }
 
 
-function get_viewedMovies($user_id) { //SERVE ANCORA?
+function get_viewedMovies($user_id) {
     $viewed_movies = array();
 
     $mysqli = new mysqli("mysql","root","root","db_film");

@@ -1,24 +1,15 @@
 HOME
-- capire se e dove si vuole mettere il selettore delle categorie
 - capire se nella pagine di ricerca si vuole mettere un selettore per categorie. e come lo si vuole fare (stavo pensando a far comparire
     prima una schermata che permette di scegliere tra categorie o per nome)
-- come faccio a lasciare la linea attivata quando scelgo una categoria?
 - il nav sembra come non boxato, deduco per la grandezza del testo.
-- quando cambio il margintop alla search bar, si sfancula l'iconcina della lente. perche e come risolvo?
 
 
 SEARCH
-- come faccio a mettere i dettagli del film partendo dal basso
 - rating da aggiungere dinamicamente (fare una sorta di calcolo della media rating)
-- mettere un numero massimo di film caricati inizialmente
 
 
 WATCHLIST
-- come metto le informazioni in basso al div staccate dal titolo?
 - come faccio per l'immagine che si modificano in base alla grandezza dello schermo? l'altezza si bugga
-- il titolo watchlist sta troppo verso destra
-- si potrebbe mettere un immagine al lato della card del film per far vedere anche il regista
-- le info corrispondono alla fine del titolo, e quando il titolo è piu lungo di un altro, si sminchia tutto
 
 
 LOGIN
@@ -26,6 +17,9 @@ LOGIN
 - stile da aggiustare
 - forgot password
 - remember me
+
+
+REGISTRATION
 
 
 GENERALE 
@@ -41,15 +35,15 @@ RECOMMENDATION
 TO DO:
 FUNZIONI
 Recommendation (FATTA ma se si riesce farla anche per i generi)
-search nella home
+search nella home - popular/upcoming/top rated - top 10 film dinamici 
 
 PAGINE
 Login - gestire errori o risultati messi nel p sotto il button
 Registrazione - rivedere sicurezza registrazione se c'è da fare altro, assegnazione foto profilo, la background image (se la teniamo) non si    carica subito
 Menu account quando si è loggati - cambio password, informazioni account, logout
 
-Watchlist vuota - dinamicita watchlist - filtraggio watchlist - ordinamento watchlist
-Ricerca non andata a buon fine
+Watchlist vuota - filtraggio watchlist - ordinamento watchlist - watchlist non loggati
+Pagina richiesta film
 
 Rating movie
 Dettagli movie
@@ -59,7 +53,9 @@ Cast
 SE SI RIESCE, FORM DI INSERIMENTO FILM E ENTRY DATABASE (perche farli da sql è una tortura)
 
 
-
+colori pagina:
+#67686D
+#0296E5
 
 
 

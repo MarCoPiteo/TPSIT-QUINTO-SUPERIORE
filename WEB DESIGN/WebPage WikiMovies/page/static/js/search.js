@@ -9,7 +9,7 @@ backButton.addEventListener('click', function() {
 
 /*SEARCHING*/
 var inputElement = document.querySelector(".search-bar");
-var filmList = document.querySelector(".watch-film-container");
+var filmList = document.querySelector(".film-container");
 
 var moviesList = [];
 
@@ -76,7 +76,7 @@ function handleInput(event) {
 
 //CARD FUNCTIONS
 function clearFilmCards() {
-    var filmListElement = document.querySelector(".watch-film-container");
+    var filmListElement = document.querySelector(".film-container");
 
     filmListElement.innerHTML = '';
 }

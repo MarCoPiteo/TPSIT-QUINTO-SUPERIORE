@@ -24,8 +24,11 @@
 </head>
 <body>
     <div class="main-container centerAlignment">
-        <h1 class="film-question">What do you want to watch?</h1>
-
+        <?php if (isset($_SESSION['username'])): ?>
+            <h1 class="film-question">Welcome Back <?php echo $_SESSION['username']?></h1>
+        <?php else: ?>
+            <h1 class="film-question">What do you want to watch?</h1>
+        <?php endif; ?>
         <div class="search-bar-div pos-relative">
             <input type="text" name="search-bar" class="search-bar" placeholder="Search a movie">
             <a href="#">
@@ -69,9 +72,11 @@
         <div class="categories-container">
             <nav class="categories-nav">
                 <ul class="categories-list flex">
-                    <li class="categories-li listItem"> 
-                        <a href="#" class="categories-link link" data-category="forYou">For you</a>
-                    </li>
+                    <?php if (isset($_SESSION['user_id'])): ?>
+                        <li class="categories-li listItem"> 
+                            <a href="#" class="categories-link link" data-category="forYou">For you</a>
+                        </li>
+                    <?php endif; ?>
                     <li class="categories-li listItem">
                         <a href="#" class="categories-link link category-selected" data-category="popular">Popular</a>
                     </li>
@@ -106,14 +111,16 @@
             <i class="material-icons">bookmark</i>
             <h3 class="button-menu-title">Watchlist</h3>
         </a>
-        <a href="login.html" class="flex link button-menu-link">
-            <?php if (isset($_SESSION['profile_photo'])): ?>
+        <?php if (isset($_SESSION['profile_photo'])): ?>
+            <a href="account.php" class="flex link button-menu-link">
                 <img src="static/images/fotoProfilo/<?php echo $_SESSION['profile_photo']; ?>" alt="Profile Image" class="profile-img">
-            <?php else: ?>
+            </a>
+        <?php else: ?>
+            <a href="login.html" class="flex link button-menu-link">
                 <i class="material-icons login-icon">person</i>
                 <h3 class="button-menu-title">Account</h3>
-            <?php endif; ?>
-        </a>
+            </a>
+        <?php endif; ?>
     </div>
 
     <script src="static/js/home.js" data-userid="<?php echo $_SESSION['user_id']; ?>"></script>

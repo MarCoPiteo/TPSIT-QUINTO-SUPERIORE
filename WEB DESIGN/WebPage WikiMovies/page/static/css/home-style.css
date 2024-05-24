@@ -22,6 +22,9 @@
 
 
 /*BARRA DI RICERCA*/
+.search-bar-div {
+    margin-top: 14px;
+}
 .search-bar {
     width: 100%;
     height: 42px;
@@ -34,15 +37,14 @@
     color: #fff;
     font-size: 14px;
 
-    margin-top: 14px;
     padding-top: 5px;
     padding-left: 12px;
 }
 .search-icon {
     color: #67686D;
     right: 12px;
-    top: /*calc(50% + 12px)*/ 61%;
-    transform: translateY(-45%);
+    top: /*calc(50% + 12px)*/ 50%;
+    transform: translateY(-50%);
 }
 
 

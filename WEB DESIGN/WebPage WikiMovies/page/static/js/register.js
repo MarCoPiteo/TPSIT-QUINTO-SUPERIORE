@@ -40,7 +40,7 @@ inputList.forEach(input => {
 
 
 /*PROFILE FOTO SELECTION*/
-const profileImagesList = document.querySelectorAll('.profilePic-image');
+const profileImagesList = document.querySelectorAll('.profilePicker-image');
 const profileInput = document.getElementById('profile_picture');
 
 profileImagesList.forEach(profileImage => {

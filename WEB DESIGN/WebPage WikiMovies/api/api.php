@@ -2,7 +2,7 @@
 header('Access-Control-Allow-Origin: *');
 
 require_once("db_query.php");
-require_once("recommendation.php");
+require_once("recommendation-prova.php");
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     if ($_SERVER['PATH_INFO'] == '/movies') {

@@ -126,3 +126,32 @@
 .rating-style {
     color: gold;
 }
+
+
+/*FAILED SEARCH*/
+.failed-search {
+    flex-direction: column;
+    align-items: center;
+
+    color: #fff;
+    text-align: center;
+
+    margin-top: 20px;
+}
+.failed-search-image {
+    width: 75px;
+
+    margin-top: calc(50% - 85px);
+}
+.failed-search-text {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.login-button {
+    background-color: #0296E5;
+    border-radius: 16px;
+
+    padding: 5px 10px;
+    margin-top: 15px;
+}

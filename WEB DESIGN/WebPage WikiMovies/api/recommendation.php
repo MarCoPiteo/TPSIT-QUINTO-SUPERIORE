@@ -9,12 +9,15 @@ function recommend_movies($user_id) {
         exit();
     }
 
-    $movieMatrix = build_matrix();
+    $movieMatrix = collaborativeFiltering_build_matrix();
     //return $movieMatrix;
 
 
     $most_similar_user = get_most_similar_user($user_id, $movieMatrix);
     //return $most_similar_user;
+
+    //RISOLVERE SITUAZIONE CON USER 12 E 3 PERCHE HANNO COSINE 1 E AVENDO VISTO GLI STESSI FILM HANNO 0 NEL PAYLOAD
+
 
     $user_movies = $movieMatrix[$user_id];
     $similar_user_movies = $movieMatrix[$most_similar_user['user_id']];
@@ -33,15 +36,14 @@ function recommend_movies($user_id) {
         }
     }
 
-    /*usort($recommended_movies, function($a, $b) {
-        return $b['rating'] - $a['rating'];
-    });*/
+    
 
     return $recommended_movies;
 }
 
 
-function build_matrix() {
+
+function collaborativeFiltering_build_matrix() {
     $mysqli = new mysqli("mysql","root","root","db_film");
     if ($mysqli -> connect_errno) {
         echo "Failed to connect to MySQL: " . $mysqli -> connect_error;

@@ -1,6 +1,6 @@
 .main-container {
     max-width: 85%; /*319px*/
-    min-height: 100vh;
+    min-height: 95vh;
 }
 
 body {
@@ -185,22 +185,23 @@ input:-webkit-autofill:active{
     flex-wrap: nowrap;
     justify-content: space-evenly;
 }
+.profile-foto-picker::-webkit-scrollbar {
+    display: none;
+}
 
-.profilePic-image {
+.profilePicker-image {
     border-radius: 50%;
 
     width: 100%;
 }
-.profilePic-image.selected {
+.profilePicker-image.selected {
     border: 2px solid #0296E5;
 }
 
-.profilePic-link {
+/*.profilePic-link {
     margin-right: 7px;
     flex: 0 0 auto;
-
-    width: 20.44%;
 }
 .profilePic-link:last-child {
     margin-right: 0;
-}
+}*/
